@@ -7,7 +7,6 @@ renv
 renv.lock
 iSEEWorkshopEuroBioc2020.Rproj
 .DS_Store
-pkgdown
 docs
 check
 doc
