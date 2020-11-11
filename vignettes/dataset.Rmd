@@ -10,7 +10,7 @@ output:
     toc_depth: 3
     fig_width: 5
     number_sections: true
-bibliography: "`r iSEEWorkshopEuroBioc2020::get_bib_file()"
+bibliography: "`r iSEEWorkshopEuroBioc2020::get_bib_file()`"
 vignette: >
   %\VignetteIndexEntry{Preprocessing a data set for iSEE}
   %\VignetteEncoding{UTF-8}
