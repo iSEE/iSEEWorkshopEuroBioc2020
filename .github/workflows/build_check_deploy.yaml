@@ -49,12 +49,12 @@ jobs:
 
       # deploy needs rsync? Seems so.
       - name: Install deploy dependencies
-        #if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           apt-get update && apt-get -y install rsync
 
       - name: Deploy pkgdown 🚀
-        #if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ jobs:
           FOLDER: docs # The folder the action should deploy.
 
       - name: Publish to Registry
-        #if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: docker.pkg.github.com/isee/iseeworkshopeurobioc2020/iseeworkshopeurobioc2020:latest
