@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://iSEE.github.io/iSEEWorkshop2020/index.html</loc>
+    <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/index.html</loc>
   </url>
   <url>
-    <loc>https://iSEE.github.io/iSEEWorkshop2020/reference/get_bib_file.html</loc>
+    <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/reference/get_bib_file.html</loc>
   </url>
   <url>
-    <loc>https://iSEE.github.io/iSEEWorkshop2020/reference/iSEEWorkshopEuroBioc2020-package.html</loc>
+    <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/reference/iSEEWorkshopEuroBioc2020-package.html</loc>
   </url>
   <url>
-    <loc>https://iSEE.github.io/iSEEWorkshop2020/articles/dataset.html</loc>
+    <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/articles/dataset.html</loc>
   </url>
   <url>
-    <loc>https://iSEE.github.io/iSEEWorkshop2020/articles/exercises.html</loc>
+    <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/articles/exercises.html</loc>
   </url>
 </urlset>
