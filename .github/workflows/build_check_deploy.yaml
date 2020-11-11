@@ -23,7 +23,7 @@ jobs:
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
 
-       - name: Install dependencies
+      - name: Install dependencies
         run: |
           options(repos = c(CRAN = "https://cran.r-project.org"))
           BiocManager::repositories()
