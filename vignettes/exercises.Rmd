@@ -1,0 +1,28 @@
+---
+title: "Hands-on workshop exercises"
+author: "Kevin Rue-Albrecht, Charlotte Soneson, Federico Marini, and Aaron Lun"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  rmarkdown::html_document:
+    highlight: pygments
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    fig_width: 5
+    number_sections: true
+bibliography: "`r iSEEWorkshopEuroBioc2020::get_bib_file()"
+vignette: >
+  %\VignetteIndexEntry{Hands-on workshop exercises}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(iSEE)
+```
