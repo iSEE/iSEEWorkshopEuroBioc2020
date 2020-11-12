@@ -124,6 +124,7 @@ However, for time reasons, we will skip the pre-clustering step in this workshop
 
 ```{r, message=FALSE}
 library(scran)
+assay(sce, "counts") <- as(assay(sce, "counts"), "sparseMatrix")
 sce <- scran::computeSumFactors(sce, min.mean = 0.1)
 summary(sizeFactors(sce))
 sce <- scater::logNormCounts(sce)
