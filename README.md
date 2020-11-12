@@ -9,7 +9,7 @@
 # Instructor(s) name(s) and contact information
 
 - Charlotte Soneson (charlotte.soneson@fmi.ch)
-- Kevin Rue-Albrecht (kevin.rue-albrecht@ndcls.ox.ac.uk)
+- Kevin Rue-Albrecht (kevin.rue-albrecht@imm.ox.ac.uk)
 - Federico Marini (marinif@uni-mainz.de)
 - Aaron Lun (infinite.monkeys.with.keyboards@gmail.com)
 
