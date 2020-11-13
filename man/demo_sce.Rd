@@ -2,19 +2,25 @@
 % Please edit documentation in R/sce.R
 \name{demo_sce}
 \alias{demo_sce}
+\alias{simulate_demo_sce}
 \title{Demonstration Data Sets}
 \usage{
 demo_sce(name = c("pbmc3k"))
+
+simulate_demo_sce(name = c("pbmc3k"))
 }
 \arguments{
-\item{name}{Data set identifier. Only `pbmc3k` is available at the moment.}
+\item{name}{Data set identifier. Only \code{pbmc3k} is available at the moment.}
 }
 \value{
-A `SingleCellExperiment` object.
+\code{simulate_demo_sce()} simulates RDS files usually provided in the \href{https://hub.docker.com/r/iseedevelopers/iseeworkshopeurobioc2020}{Docker container}.
+
+\code{demo_sce()} returns a \code{SingleCellExperiment} object.
 }
 \description{
 Demonstration Data Sets
 }
 \examples{
+simulate_demo_sce("pbmc3k")
 sce <- demo_sce("pbmc3k")
 }
