@@ -24,16 +24,15 @@ demo_sce <- function(name = c("pbmc3k")) {
 #' @export
 #' 
 #' @importFrom SingleCellExperiment SingleCellExperiment
-simulate_demo_sce <- function(name = c("pbmc3k")) {
-    name <- match.arg(name)
+simulate_demo_sce <- function(name) {
     user_home <- path.expand("~")
     base_file <- sprintf("%s.rds", name)
     dir_sce <- file.path(user_home, "iseeworkshopeurobioc2020", "vignettes")
     file_sce <- file.path(dir_sce, base_file)
-    # In the Docker container, the file should already exist
-    if (!file.exists(file_sce)) {
-        dir.create(dir_sce, recursive = TRUE)
-        saveRDS(SingleCellExperiment(), file_sce)
+    dir.create(dir_sce, recursive = TRUE)
+    if (file.exists(file_sce)) {
+        stop("File already exists: ", file_sce)
     }
+    saveRDS(SingleCellExperiment(), file_sce)
     TRUE
 }

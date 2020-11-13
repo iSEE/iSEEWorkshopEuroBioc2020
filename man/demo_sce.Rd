@@ -7,7 +7,7 @@
 \usage{
 demo_sce(name = c("pbmc3k"))
 
-simulate_demo_sce(name = c("pbmc3k"))
+simulate_demo_sce(name)
 }
 \arguments{
 \item{name}{Data set identifier. Only \code{pbmc3k} is available at the moment.}
