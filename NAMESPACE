@@ -2,5 +2,3 @@
 
 export(demo_sce)
 export(get_bib_file)
-export(simulate_demo_sce)
-importFrom(SingleCellExperiment,SingleCellExperiment)
