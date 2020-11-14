@@ -1,4 +1,4 @@
-<img src="man/figures/Banner-Xmas-1-01.png" align="center" width="100%">
+<img src="man/figures/Banner-Xmas-2.png" align="center" width="100%">
 
 <!-- badges: start -->
 [![R build status](https://github.com/iSEE/iSEEWorkshopEuroBioc2020/workflows/build_check_deploy/badge.svg)](https://github.com/iSEE/iSEEWorkshopEuroBioc2020/actions)
