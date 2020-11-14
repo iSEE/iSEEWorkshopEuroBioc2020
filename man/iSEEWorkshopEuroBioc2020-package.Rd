@@ -20,7 +20,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Kevin Rue-Albrecht \email{kevin.rue-albrecht@kennedy.ox.ac.uk} (\href{https://orcid.org/0000-0003-3899-3872}{ORCID})
+\strong{Maintainer}: Kevin Rue-Albrecht \email{kevin.rue-albrecht@imm.ox.ac.uk} (\href{https://orcid.org/0000-0003-3899-3872}{ORCID})
 
 Authors:
 \itemize{

@@ -124,7 +124,7 @@ However, for time reasons, we will skip the pre-clustering step in this workshop
 
 ```{r, message=FALSE}
 library(scran)
-assay(sce, "counts") <- as(assay(sce, "counts"), "sparseMatrix") # dirty fix for DockerHub
+assay(sce, "counts") <- as(assay(sce, "counts"), "sparseMatrix") # dirty fix for DockerHub
 sce <- scran::computeSumFactors(sce, min.mean = 0.1)
 summary(sizeFactors(sce))
 sce <- scater::logNormCounts(sce)
@@ -175,5 +175,5 @@ This concludes the preparation of the data.
 We have now a `SingleCellExperiment` object that contains different types of abundance values, representations in reduced dimensions, as well as a range of row (feature) and column (cell) metadata.
 
 ```{r}
-saveRDS(sce, "sce.rds")
+saveRDS(sce, "pbmc3k.rds")
 ```
