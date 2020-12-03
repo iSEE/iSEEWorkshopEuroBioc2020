@@ -14,4 +14,4 @@ RUN Rscript -e "options(repos = c(CRAN = 'https://cran.r-project.org')); BiocMan
 
 RUN Rscript -e "options(repos = c(CRAN = 'https://cran.r-project.org')); devtools::install('.', dependencies=TRUE, build_vignettes=TRUE, repos = BiocManager::repositories())"
 
-RUN Rscript -e "knitr::knit(system.file(package = "iSEEWorkshopEuroBioc2020", 'doc', 'dataset.Rmd'))"
+RUN Rscript -e "knitr::knit(system.file(package = 'iSEEWorkshopEuroBioc2020', 'doc', 'dataset.Rmd'))"
