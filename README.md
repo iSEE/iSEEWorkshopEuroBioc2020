@@ -1,7 +1,9 @@
-<img src="man/figures/Banner-Xmas-1-01.png" align="center" width="100%">
+<img src="man/figures/Banner-Xmas-2.png" align="center" width="100%">
 
 <!-- badges: start -->
 [![R build status](https://github.com/iSEE/iSEEWorkshopEuroBioc2020/workflows/build_check_deploy/badge.svg)](https://github.com/iSEE/iSEEWorkshopEuroBioc2020/actions)
+[![Codecov.io coverage status](https://codecov.io/github/iSEE/iSEEWorkshopEuroBioc2020/coverage.svg?branch=main)](https://codecov.io/github/iSEE/iSEEWorkshopEuroBioc2020)
+[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/iseedevelopers/isee)](https://hub.docker.com/r/iseedevelopers/iseeworkshopeurobioc2020)
 <!-- badges: end -->
 
 # iSEE: Interactive visualization of `SummarizedExperiment` objects <img src="man/figures/logo.png" align="right" width="240" height="278">
@@ -9,7 +11,7 @@
 # Instructor(s) name(s) and contact information
 
 - Charlotte Soneson (charlotte.soneson@fmi.ch)
-- Kevin Rue-Albrecht (kevin.rue-albrecht@ndcls.ox.ac.uk)
+- Kevin Rue-Albrecht (kevin.rue-albrecht@imm.ox.ac.uk)
 - Federico Marini (marinif@uni-mainz.de)
 - Aaron Lun (infinite.monkeys.with.keyboards@gmail.com)
 
