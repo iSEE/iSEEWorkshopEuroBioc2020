@@ -1,6 +1,6 @@
 library(SingleCellExperiment)
 
-.demo_sce_dir <- system.file(package = "iSEEWorkshopEuroBioc2020", 'doc')
+.demo_sce_dir <- file.path(system.file(package = "iSEEWorkshopEuroBioc2020"), 'doc')
 
 .simulate_demo_sce <- function(name = "pbmc3k") {
     base_demo_file <- sprintf("%s.rds", name)
