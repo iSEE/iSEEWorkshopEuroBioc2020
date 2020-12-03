@@ -152,7 +152,7 @@ sce <- scater::runUMAP(sce, dimred = "PCA")
 sce
 ```
 
-Finally, we cluster the cells using a graph-based algorithm, and find 'marker genes' for each cluster as the genes that are significantly upregulated in the cluster compared to each of the other inferred clusters.
+After this, we cluster the cells using a graph-based algorithm, and find 'marker genes' for each cluster as the genes that are significantly upregulated in the cluster compared to each of the other inferred clusters.
 The adjusted p-values from this test, for each cluster, are added to the `rowData` slot of the object.
 
 ```{r}
@@ -171,9 +171,34 @@ for (i in names(markers)) {
 sce
 ```
 
+Finally, we assign a label to each cell, based on their individual transcriptome profiles, using the `SingleR` method and the Monaco immune data (https://doi.org/10.1016/j.celrep.2019.01.041) as a reference.  
+For each prediction, we assign the labels values to a specific `colData` element
+
+```{r}
+library(SingleR)
+library(celldex)
+
+ref_monaco <- MonacoImmuneData()
+
+pred_monaco_main <- SingleR(test = sce, ref = ref_monaco, labels = ref_monaco$label.main)
+table(pred_monaco_main$labels)
+sce$labels_main <- pred_monaco_main$labels
+pred_monaco_fine <- SingleR(test = sce, ref = ref_monaco, labels = ref_monaco$label.fine)
+table(pred_monaco_fine$labels)
+sce$labels_fine <- pred_monaco_fine$labels
+pred_monaco_ont <- SingleR(test = sce, ref = ref_monaco, labels = ref_monaco$label.ont)
+table(pred_monaco_ont$labels)
+sce$labels_ont <- pred_monaco_ont$labels
+
+table(sce$labels_main,
+      sce$labels_fine)
+```
+
 This concludes the preparation of the data.
 We have now a `SingleCellExperiment` object that contains different types of abundance values, representations in reduced dimensions, as well as a range of row (feature) and column (cell) metadata.
 
 ```{r}
 saveRDS(sce, "pbmc3k.rds")
 ```
+
+TODO: re-upload to Dropbox with the extra colData?
