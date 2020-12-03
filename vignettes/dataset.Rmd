@@ -200,5 +200,3 @@ We have now a `SingleCellExperiment` object that contains different types of abu
 ```{r}
 saveRDS(sce, "pbmc3k.rds")
 ```
-
-TODO: re-upload to Dropbox with the extra colData?

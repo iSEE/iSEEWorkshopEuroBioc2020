@@ -12,9 +12,8 @@
 #' }
 demo_sce <- function(name = c("pbmc3k")) {
     name <- match.arg(name)
-    user_home <- path.expand("~")
     base_file <- sprintf("%s.rds", name)
-    file_sce <- file.path(user_home, "iseeworkshopeurobioc2020", "vignettes", base_file)
+    file_sce <- system.file(package = "iSEEWorkshopEuroBioc2020", 'doc', base_file)
     sce <- readRDS(file_sce)
     sce
 }
