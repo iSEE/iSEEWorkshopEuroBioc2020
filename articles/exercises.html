@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Hands-on workshop exercises</h1>
                         <h4 class="author">Kevin Rue-Albrecht, Charlotte Soneson, Federico Marini, and Aaron Lun</h4>
             
-            <h4 class="date">December 03, 2020</h4>
+            <h4 class="date">December 04, 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/iSEE/iSEEWorkshopEuroBioc2020/blob/master/vignettes/exercises.Rmd"><code>vignettes/exercises.Rmd</code></a></small>
       <div class="hidden name"><code>exercises.Rmd</code></div>
@@ -103,13 +103,34 @@
 
     
     
+<div id="prepare-session" class="section level1">
+<h1 class="hasAnchor">
+<a href="#prepare-session" class="anchor"></a>Prepare session</h1>
+<p>Load packages and the demo data set.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/iSEE/iSEE">iSEE</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/iSEE/iSEE">iSEE</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://iSEE.github.io/iSEEWorkshopEuroBioc2020">iSEEWorkshopEuroBioc2020</a></span><span class="op">)</span>
+<span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_demo_sce.html">load_demo_sce</a></span><span class="op">(</span><span class="st">"pbmc3k"</span><span class="op">)</span>
+<span class="va">sce</span></code></pre></div>
+<pre><code>## class: SingleCellExperiment 
+## dim: 32738 2643 
+## metadata(0):
+## assays(2): counts logcounts
+## rownames(32738): MIR1302-10 FAM138A ... AC002321.2 AC002321.1
+## rowData names(21): ENSEMBL_ID Symbol_TENx ... FDR_cluster13
+##   FDR_cluster14
+## colnames(2643): Cell1 Cell2 ... Cell2699 Cell2700
+## colData names(23): Sample Barcode ... labels_fine labels_ont
+## reducedDimNames(3): PCA TSNE UMAP
+## altExpNames(0):</code></pre>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

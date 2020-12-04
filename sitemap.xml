@@ -4,13 +4,13 @@
     <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/index.html</loc>
   </url>
   <url>
-    <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/reference/demo_sce.html</loc>
-  </url>
-  <url>
     <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/reference/get_bib_file.html</loc>
   </url>
   <url>
     <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/reference/iSEEWorkshopEuroBioc2020-package.html</loc>
+  </url>
+  <url>
+    <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/reference/load_demo_sce.html</loc>
   </url>
   <url>
     <loc>https://iSEE.github.io/iSEEWorkshopEuroBioc2020/articles/dataset.html</loc>

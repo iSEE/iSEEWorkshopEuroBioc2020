@@ -96,7 +96,7 @@
       <h1 data-toc-skip>Preprocessing a data set for iSEE</h1>
                         <h4 class="author">Kevin Rue-Albrecht, Charlotte Soneson, Federico Marini, and Aaron Lun</h4>
             
-            <h4 class="date">December 03, 2020</h4>
+            <h4 class="date">December 04, 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/iSEE/iSEEWorkshopEuroBioc2020/blob/master/vignettes/dataset.Rmd"><code>vignettes/dataset.Rmd</code></a></small>
       <div class="hidden name"><code>dataset.Rmd</code></div>
@@ -196,7 +196,7 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">scran</span><span class="op">)</span>
 <span class="fu">assay</span><span class="op">(</span><span class="va">sce</span>, <span class="st">"counts"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="fu">assay</span><span class="op">(</span><span class="va">sce</span>, <span class="st">"counts"</span><span class="op">)</span>, <span class="st">"sparseMatrix"</span><span class="op">)</span> <span class="co"># dirty fix for DockerHub</span>
 <span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu">scran</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/scran/man/computeSumFactors.html">computeSumFactors</a></span><span class="op">(</span><span class="va">sce</span>, min.mean <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu">sizeFactors</span><span class="op">(</span><span class="va">sce</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/sizeFactors.html">sizeFactors</a></span><span class="op">(</span><span class="va">sce</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
 <span class="co">#&gt;  0.1164  0.7309  0.9004  1.0000  1.1635  9.8580</span>
 <span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu">scater</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/scuttle/man/logNormCounts.html">logNormCounts</a></span><span class="op">(</span><span class="va">sce</span><span class="op">)</span></code></pre></div>
@@ -208,10 +208,10 @@
 <span class="co">#&gt; DataFrame with 6 rows and 6 columns</span>
 <span class="co">#&gt;              mean     total      tech       bio      p.value          FDR</span>
 <span class="co">#&gt;         &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;    &lt;numeric&gt;    &lt;numeric&gt;</span>
-<span class="co">#&gt; LYZ       1.63950   3.92209  0.884955   3.03713 4.59558e-117 2.54472e-113</span>
-<span class="co">#&gt; S100A9    1.07323   3.36899  0.778205   2.59079 2.72222e-110 9.04432e-107</span>
-<span class="co">#&gt; HLA-DRA   1.56937   3.16577  0.880146   2.28562  5.73029e-68  7.93263e-65</span>
-<span class="co">#&gt; FTL       3.67846   2.88499  0.708226   2.17676  2.46520e-94  5.85028e-91</span>
+<span class="co">#&gt; LYZ       1.63950   3.92209  0.884955   3.03713 4.59557e-117 2.54472e-113</span>
+<span class="co">#&gt; S100A9    1.07323   3.36899  0.778205   2.59079 2.72222e-110 9.04431e-107</span>
+<span class="co">#&gt; HLA-DRA   1.56937   3.16577  0.880146   2.28562  5.73028e-68  7.93262e-65</span>
+<span class="co">#&gt; FTL       3.67846   2.88499  0.708226   2.17676  2.46521e-94  5.85029e-91</span>
 <span class="co">#&gt; CD74      2.23653   2.75839  0.854474   1.90392  1.34728e-50  1.01732e-47</span>
 <span class="co">#&gt; CST3      1.10995   2.59172  0.790231   1.80149  7.24671e-53  6.01912e-50</span></code></pre></div>
 <p>Next, we apply Principal Components Analysis (PCA) and t-distributed Stochastic Neighbor Embedding (t-SNE) to generate low-dimensional representations of the cells in our data set. These low-dimensional representations are added to the <code>reducedDim</code> slot of the <code>SingleCellExperiment</code> object.</p>
@@ -219,7 +219,7 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LTLA/BiocSingular">BiocSingular</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span>
 <span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu">scran</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/scran/man/denoisePCA.html">denoisePCA</a></span><span class="op">(</span><span class="va">sce</span>, technical <span class="op">=</span> <span class="va">dec</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="fu">reducedDim</span><span class="op">(</span><span class="va">sce</span>, <span class="st">"PCA"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDim</a></span><span class="op">(</span><span class="va">sce</span>, <span class="st">"PCA"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] 5</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span>
 <span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu">scater</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/scater/man/runTSNE.html">runTSNE</a></span><span class="op">(</span><span class="va">sce</span>, dimred <span class="op">=</span> <span class="st">"PCA"</span>, perplexity <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
@@ -445,8 +445,9 @@ For each prediction, we assign the labels values to a specific <code>colData</co
 <span class="co">#&gt;   T cells                 7             17          2         0             92</span></code></pre></div>
 <p>This concludes the preparation of the data. We have now a <code>SingleCellExperiment</code> object that contains different types of abundance values, representations in reduced dimensions, as well as a range of row (feature) and column (cell) metadata.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">sce</span>, <span class="st">"pbmc3k.rds"</span><span class="op">)</span></code></pre></div>
-<p>TODO: re-upload to Dropbox with the extra colData?</p>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://iSEE.github.io/iSEEWorkshopEuroBioc2020">iSEEWorkshopEuroBioc2020</a></span><span class="op">)</span>
+<span class="fu"><a href="../reference/load_demo_sce.html">cache_demo_sce</a></span><span class="op">(</span><span class="va">sce</span>, <span class="st">"pbmc3k"</span><span class="op">)</span>
+<span class="co">#&gt; Saving object to /github/home/.cache/iSEEWorkshopEuroBioc2020/pbmc3k.rds</span></code></pre></div>
 </div>
   </div>
 
