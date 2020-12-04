@@ -5,7 +5,10 @@ Description: This workshop covers basic usage of iSEE for
 Version: 0.0.1
 Depends:
     R (>= 4.0.0)
+Imports:
+    methods
 Suggests:
+    SingleCellExperiment,
     knitr,
     htmltools,
     rmarkdown,

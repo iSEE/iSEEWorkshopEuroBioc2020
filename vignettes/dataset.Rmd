@@ -198,7 +198,6 @@ This concludes the preparation of the data.
 We have now a `SingleCellExperiment` object that contains different types of abundance values, representations in reduced dimensions, as well as a range of row (feature) and column (cell) metadata.
 
 ```{r}
-saveRDS(sce, "pbmc3k.rds")
+library(iSEEWorkshopEuroBioc2020)
+cache_demo_sce(sce, "pbmc3k")
 ```
-
-TODO: re-upload to Dropbox with the extra colData?
