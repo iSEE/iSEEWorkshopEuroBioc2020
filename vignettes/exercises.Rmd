@@ -26,5 +26,5 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r, message=FALSE}
 library(iSEE)
 library(iSEEWorkshopEuroBioc2020)
-sce <- demo_sce("pbmc3k")
+sce <- load_demo_sce("pbmc3k")
 ```
