@@ -14,4 +14,10 @@ RUN Rscript --vanilla -e "options(repos = c(CRAN = 'https://cran.r-project.org')
 
 RUN Rscript --vanilla -e "options(repos = c(CRAN = 'https://cran.r-project.org')); devtools::install('.', dependencies=TRUE, build_vignettes=TRUE, repos = BiocManager::repositories())"
 
-RUN Rscript --vanilla -e "knitr::knit(system.file(package = 'iSEEWorkshopEuroBioc2020', 'doc', 'dataset.Rmd'))"
+# The vignette needs to be run as the rstudio user, to store the file in his home folder
+USER rstudio
+
+RUN Rscript --vanilla -e "knitr::knit('/home/rstudio/iseeworkshopeurobioc2020/vignettes/dataset.Rmd', tempfile(fileext = '.md'))"
+
+# Seems like root user needs to be active when `docker run` is called
+USER root
