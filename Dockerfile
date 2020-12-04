@@ -14,4 +14,8 @@ RUN Rscript --vanilla -e "options(repos = c(CRAN = 'https://cran.r-project.org')
 
 RUN Rscript --vanilla -e "options(repos = c(CRAN = 'https://cran.r-project.org')); devtools::install('.', dependencies=TRUE, build_vignettes=TRUE, repos = BiocManager::repositories())"
 
-RUN Rscript --vanilla -e "knitr::knit(system.file(package = 'iSEEWorkshopEuroBioc2020', 'doc', 'dataset.Rmd'))"
+USER rstudio
+
+RUN Rscript --vanilla -e "knitr::knit('/home/rstudio/iseeworkshopeurobioc2020/vignettes/dataset.Rmd', tempfile(fileext = '.md'))"
+
+USER root
