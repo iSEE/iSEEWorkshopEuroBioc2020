@@ -23,8 +23,13 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Prepare session
+
+Load packages and the demo data set.
+
 ```{r, message=FALSE}
 library(iSEE)
 library(iSEEWorkshopEuroBioc2020)
 sce <- load_demo_sce("pbmc3k")
+sce
 ```
