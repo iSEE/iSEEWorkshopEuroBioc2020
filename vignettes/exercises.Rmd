@@ -251,6 +251,10 @@ app <- iSEE(sce, initial = list(
 ```
 </details>
 
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/exercise_05.png", delay=20)
+```
+
 # Exercise 6: Visual parameters configuration - coloring reduced dimension representations by gene expression
 
 Using the `pbmc3k` data set, display two tSNE representations next to each other. In the first one, color the cells by the logcounts expression level of `CD3D`. In the second one, color the cells by the logcounts expression level of `CD79B`. 
@@ -296,6 +300,10 @@ app <- iSEE(sce, initial = list(
 ))
 ```
 </details>
+
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/exercise_06.png", delay=20)
+```
 
 # Exercise 7: Visual parameters configuration - changing the size and opacity of points
 
@@ -343,6 +351,10 @@ app <- iSEE(sce, initial = list(
 ))
 ```
 </details>
+
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/exercise_07.png", delay=20)
+```
 
 # Exercise 8: Selection configuration
 
@@ -401,6 +413,10 @@ app <- iSEE(sce, initial = list(
 ))
 ```
 </details>
+
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/exercise_08.png", delay=20)
+```
 
 # Exercise 9: Verifying the cell type identity of clusters
 
@@ -461,4 +477,14 @@ app <- iSEE(sce, initial = list(
 ))
 ```
 </details>
+
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/exercise_09.png", delay=20)
+```
+
+# Session info
+
+```{r}
+sessionInfo()
+```
 
