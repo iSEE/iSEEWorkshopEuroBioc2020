@@ -42,6 +42,7 @@ Using the `pbmc3k` data set , create a pre-configured app that contains only the
 - a panel of class `r .fullName(ReducedDimensionPlot())`
 
 <details>
+<summary>Solution</summary>
 ```{r}
 app <- iSEE(sce, list(
     ReducedDimensionPlot(),
