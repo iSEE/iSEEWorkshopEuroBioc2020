@@ -36,7 +36,7 @@ sce
 
 # Exercise 1: Panel organisation
 
-Using the `pbmc3k` data set , create a pre-configured app that contains only the following panels:
+Using the `pbmc3k` data set, create a pre-configured app that contains only the following panels:
 
 - a panel of class `r .fullName(ReducedDimensionPlot())`
 - a panel of class `r .fullName(ReducedDimensionPlot())`
@@ -47,6 +47,162 @@ Using the `pbmc3k` data set , create a pre-configured app that contains only the
 app <- iSEE(sce, list(
     ReducedDimensionPlot(),
     ColumnDataTable()
+))
+```
+</details>
+
+# Exercise 2: Data parameters configuration - selecting columns to display
+
+Using the `pbmc3k` data set, visualize the cell type assignment against the cluster membership, with the aim to identify the predominant cell type in each cluster. In this case, since both cell annotations are categorical, `iSEE` will generate a so called Hinton plot.
+
+<details>
+<summary>Hint</summary>
+<ul>
+<li>Column (in this case cell) annotations can be visualized using a `ColumnDataPlot` panel.</li>
+<li>The cluster labels are available in the `Cluster` column.</li>
+<li>The cell type assignments are available in the `labels_fine` column of `colData(sce)` (more coarse-grained assignments are provided in the `labels_main` column).</li>
+<li>`iSEE` will automatically determine the plot type depending on the type of selected variables.</li>
+</ul>
+</details>
+
+<details>
+<summary>Solution (interactively)</summary>
+<ul>
+<li>First open an application with a single `ColumnDataPlot` panel spanning the full application window)</li>
+```{r, eval = FALSE}
+app <- iSEE(sce, initial = list(ColumnDataPlot(PanelWidth = 12L)))
+shiny::runApp(app)
+```
+<li>In the `ColumnDataPlot` panel, click to expand the `Data parameters` collapsible box.</li>
+<li>Under `Column of interest (Y-axis)`, select the label column (e.g., `labels_fine`).</li>
+<li>Under `X-axis`, select `Column data`, and under `Column of interest (X-axis)`, select `Cluster`.</li>
+</ul>
+</details>
+
+<details>
+<summary>Solution (programmatically)</summary>
+```{r}
+app <- iSEE(sce, list(
+    ColumnDataPlot(PanelWidth = 12L, XAxis = "Column data",
+                   YAxis = "labels_fine", XAxisColumnData = "Cluster")
+))
+```
+</details>
+
+# Exercise 3: Data parameters configuration - displaying multiple reduced dimension representations
+
+Using the `pbmc3k` data set, display both the tSNE and UMAP representations next to each other.
+
+<details>
+<summary>Hint</summary>
+<ul>
+<li>Reduced dimension representations can be displayed using `ReducedDimensionPlot` panels.</li>
+<li>The reduced dimension representations in the SingleCellExperiment object can be accessed by name (`reducedDimNames(sce)` lists the available representations).</li>
+</ul>
+</details>
+
+<details>
+<summary>Solution (interactively)</summary>
+<ul>
+<li>First open an application with two `ReducedDimensionPlot` panels, each spanning half the application window)</li>
+```{r, eval = FALSE}
+app <- iSEE(sce, initial = list(ReducedDimensionPlot(PanelWidth = 6L),
+                                ReducedDimensionPlot(PanelWidth = 6L)))
+shiny::runApp(app)
+```
+<li>In the first `ReducedDimensionPlot` panel, click to expand the `Data parameters` collapsible box.</li>
+<li>In the `Type` selection box, choose `TSNE`.</li>
+<li>In the second `ReducedDimensionPlot` panel, repeat the procedure but instead select `UMAP`.</li>
+</ul>
+</details>
+
+<details>
+<summary>Solution (programmatically)</summary>
+```{r}
+app <- iSEE(sce, initial = list(
+    ReducedDimensionPlot(PanelWidth = 6L, Type = "TSNE"),
+    ReducedDimensionPlot(PanelWidth = 6L, Type = "UMAP")
+))
+```
+</details>
+
+# Exercise 4: Data parameters configuration - displaying the expression of a specific gene across clusters
+
+Using the `pbmc3k` data set, plot the distribution of the logcount values for the gene `CD74` in each of the clusters.
+
+<details>
+<summary>Hint</summary>
+<ul>
+<li>Gene expression values can be displayed using a `FeatureAssayPlot` panel.</li>
+<li>To select a gene, specify the ID provided as row names in the SingleCellExperiment.</li>
+</ul>
+</details>
+
+<details>
+<summary>Solution (interactively)</summary>
+<ul>
+<li>First open an application with a `FeatureAssayPlot` panel, spanning the full application window)</li>
+```{r, eval = FALSE}
+app <- iSEE(sce, initial = list(FeatureAssayPlot(PanelWidth = 12L)))
+shiny::runApp(app)
+```
+<li>In the `FeatureAssayPlot` panel, click to expand the `Data parameters` collapsible box.</li>
+<li>Under `Y-axis feature`, type or select `CD74`.</li>
+<li>Under `X-axis`, select `Column data`, and under `Column of interest (X-axis)`, select `Cluster`.</li>
+</ul>
+</details>
+
+<details>
+<summary>Solution (programmatically)</summary>
+```{r}
+app <- iSEE(sce, initial = list(
+    FeatureAssayPlot(PanelWidth = 12L, XAxis = "Column data",
+                     YAxisFeatureName = "CD74", XAxisColumnData = "Cluster")
+))
+```
+</details>
+
+# Exercise 5: Visual parameters configuration - coloring reduced dimension representations
+
+Using the `pbmc3k` data set, display two tSNE representations next to each other. In the first one, color the cells by the cluster label. In the second one, color the cells by the assigned cell type. 
+
+<details>
+<summary>Hint</summary>
+<ul>
+<li>Reduced dimension representations can be displayed using `ReducedDimensionPlot` panels.</li>
+<li>The reduced dimension representations in the SingleCellExperiment object can be accessed by name (`reducedDimNames(sce)` lists the available representations).</li>
+<li>The cluster labels are available in the `Cluster` column.</li>
+<li>Coarse-grained cell type assignments are available in the `labels_main` column of `colData(sce)`.</li>
+</ul>
+</details>
+
+<details>
+<summary>Solution (interactively)</summary>
+<ul>
+<li>First open an application with two `ReducedDimensionPlot` panels, each spanning half the application window)</li>
+```{r, eval = FALSE}
+app <- iSEE(sce, initial = list(ReducedDimensionPlot(PanelWidth = 6L),
+                                ReducedDimensionPlot(PanelWidth = 6L)))
+shiny::runApp(app)
+```
+<li>In each `ReducedDimensionPlot` panel, click to expand the `Data parameters` collapsible box and under `Type`, choose `TSNE`.</li>
+<li>In the first `ReducedDimensionPlot` panel, click to expand the `Visual parameters` collapsible box.</li>
+<li>Under `Color by`, select `Column data`.</li>
+<li>In the dropdown menu that appears, select `Cluster`.</li>
+<li>In the second `ReducedDimensionPlot` panel, repeat the procedure but instead select `labels_main`.</li>
+</ul>
+</details>
+
+<details>
+<summary>Solution (programmatically)</summary>
+```{r}
+app <- iSEE(sce, initial = list(
+    ReducedDimensionPlot(PanelWidth = 6L, Type = "TSNE",
+                         ColorBy = "Column data",
+                         ColorByColumnData = "Cluster"),
+    ReducedDimensionPlot(PanelWidth = 6L, Type = "TSNE",
+                         ColorBy = "Column data",
+                         ColorByColumnData = "labels_main")
 ))
 ```
 </details>
