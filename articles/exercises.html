@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Hands-on workshop exercises</h1>
                         <h4 class="author">Kevin Rue-Albrecht, Charlotte Soneson, Federico Marini, and Aaron Lun</h4>
             
-            <h4 class="date">December 04, 2020</h4>
+            <h4 class="date">December 05, 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/iSEE/iSEEWorkshopEuroBioc2020/blob/master/vignettes/exercises.Rmd"><code>vignettes/exercises.Rmd</code></a></small>
       <div class="hidden name"><code>exercises.Rmd</code></div>
@@ -103,9 +103,9 @@
 
     
     
-<div id="prepare-session" class="section level1">
+<div id="prepare-the-session" class="section level1">
 <h1 class="hasAnchor">
-<a href="#prepare-session" class="anchor"></a>Prepare session</h1>
+<a href="#prepare-the-session" class="anchor"></a>Prepare the session</h1>
 <p>Load packages and the demo data set.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/iSEE/iSEE">iSEE</a></span><span class="op">)</span>
@@ -123,6 +123,22 @@
 ## colData names(23): Sample Barcode ... labels_fine labels_ont
 ## reducedDimNames(3): PCA TSNE UMAP
 ## altExpNames(0):</code></pre>
+</div>
+<div id="exercise-1-panel-organisation" class="section level1">
+<h1 class="hasAnchor">
+<a href="#exercise-1-panel-organisation" class="anchor"></a>Exercise 1: Panel organisation</h1>
+<p>Using the <code>pbmc3k</code> data set , create a pre-configured app that contains only the following panels:</p>
+<ul>
+<li>a panel of class Reduced dimension plot</li>
+<li>a panel of class Reduced dimension plot</li>
+</ul>
+<details><p><summary>Solution</summary></p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ColumnDataTable-class.html">ColumnDataTable</a></span><span class="op">(</span><span class="op">)</span>
+<span class="op">)</span><span class="op">)</span></code></pre></div>
+</details>
 </div>
   </div>
 
