@@ -10,6 +10,7 @@ output:
     toc_depth: 3
     fig_width: 5
     number_sections: true
+    code_folding: show
 bibliography: "`r iSEEWorkshopEuroBioc2020::get_bib_file()`"
 vignette: >
   %\VignetteIndexEntry{Hands-on workshop exercises}
@@ -23,7 +24,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Prepare session
+# Prepare the session
 
 Load packages and the demo data set.
 
@@ -32,4 +33,18 @@ library(iSEE)
 library(iSEEWorkshopEuroBioc2020)
 sce <- load_demo_sce("pbmc3k")
 sce
+```
+
+# Exercise 1: Panel organisation
+
+Using the `pbmc3k` data set , create a pre-configured app that contains only the following panels:
+
+- a panel of class `r .fullName(ReducedDimensionPlot())`
+- a panel of class `r .fullName(ReducedDimensionPlot())`
+
+```{r, class.source='fold-hide'}
+app <- iSEE(sce, list(
+    ReducedDimensionPlot(),
+    ColumnDataTable()
+))
 ```
