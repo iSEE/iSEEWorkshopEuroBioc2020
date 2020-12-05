@@ -10,7 +10,6 @@ output:
     toc_depth: 3
     fig_width: 5
     number_sections: true
-    code_folding: show
 bibliography: "`r iSEEWorkshopEuroBioc2020::get_bib_file()`"
 vignette: >
   %\VignetteIndexEntry{Hands-on workshop exercises}
@@ -42,9 +41,11 @@ Using the `pbmc3k` data set , create a pre-configured app that contains only the
 - a panel of class `r .fullName(ReducedDimensionPlot())`
 - a panel of class `r .fullName(ReducedDimensionPlot())`
 
-```{r, class.source='fold-hide'}
+<details>
+```{r}
 app <- iSEE(sce, list(
     ReducedDimensionPlot(),
     ColumnDataTable()
 ))
 ```
+</details>
