@@ -65,7 +65,7 @@ app <- iSEE(sce)
 shiny::runApp(app)
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-initial.png", delay=20)
 ```
 
@@ -86,7 +86,7 @@ app <- iSEE()
 shiny::runApp(app)
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-no-se.png", delay=10)
 ```
 
@@ -122,7 +122,7 @@ app <- iSEE(sce, initial = list(ReducedDimensionPlot(
 )))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-reduceddimensionplot.png", delay=10)
 ```
 
@@ -139,7 +139,7 @@ app <- iSEE(sce, initial = list(ColumnDataPlot(
 )))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-columndataplot.png", delay=10)
 ```
 
@@ -155,7 +155,7 @@ app <- iSEE(sce, initial = list(RowDataPlot(
 )))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-rowdataplot.png", delay=10)
 ```
 
@@ -171,7 +171,7 @@ app <- iSEE(sce, initial = list(ComplexHeatmapPlot(
 )))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-complexheatmapplot.png", delay=10)
 ```
 
@@ -189,7 +189,7 @@ app <- iSEE(sce, initial = list(FeatureAssayPlot(
 )))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-featureassayplot.png", delay=10)
 ```
 
@@ -206,7 +206,7 @@ app <- iSEE(sce, initial = list(SampleAssayPlot(
 )))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-sampleassayplot.png", delay=10)
 ```
 
@@ -218,7 +218,7 @@ The row data table displays all information provided in the `rowData` slot of th
 app <- iSEE(sce, initial = list(RowDataTable(PanelWidth = 12L)))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-rowdatatable.png", delay=10)
 ```
 
@@ -230,7 +230,7 @@ Analogous to the [row data table](#rowdatatable) above, the column data table di
 app <- iSEE(sce, initial = list(ColumnDataTable(PanelWidth = 12L)))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-columndatatable.png", delay=10)
 ```
 
@@ -249,7 +249,7 @@ app <- iSEE(sce, initial = list(ColumnDataPlot(
 )))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-columndataplot-dataparameters.png", delay=10)
 ```
 
@@ -259,7 +259,7 @@ In contrast to the `Data parameters` collapsible box that lets users control _wh
 
 This collapsible box contains the controls to change the size, shape, opacity, and color of the points, to facet the plot by any available categorical annotation, to subsample points for increased speed of plot rendering, and to control how legends are displayed.
 
-```{r, message=FALSE, echo = FALSE}
+```{r, message=FALSE, echo=FALSE}
 app <- iSEE(sce, initial = list(ColumnDataPlot(
   PanelWidth = 12L, VisualBoxOpen = TRUE,
   XAxis = "Column data", XAxisColumnData = "Cluster",
@@ -268,7 +268,7 @@ app <- iSEE(sce, initial = list(ColumnDataPlot(
 )))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-columndataplot-visualparameters.png", delay=10)
 ```
 
@@ -286,7 +286,7 @@ app <- iSEE(sce, initial = list(ReducedDimensionPlot(
 )))
 ```
 
-```{r, echo=FALSE, out.width = '100%'}
+```{r, echo=FALSE, out.width='100%'}
 SCREENSHOT("screenshots/isee-reduceddimensionplot-selectionparameters.png", delay=10)
 ```
 
