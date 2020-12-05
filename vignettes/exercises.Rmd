@@ -23,6 +23,10 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r, eval=!exists("SCREENSHOT"), include=FALSE}
+SCREENSHOT <- function(x, ...) knitr::include_graphics(x)
+```
+
 # Prepare the session
 
 Load packages and the demo data set.
@@ -74,6 +78,10 @@ app <- iSEE(sce, initial = list(
 ```
 </details>
 
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/exercise_01.png", delay=20)
+```
+
 # Exercise 2: Data parameters configuration - selecting columns to display
 
 Using the `pbmc3k` data set, visualize the cell type assignment against the cluster membership, with the aim to identify the predominant cell type in each cluster. In this case, since both cell annotations are categorical, `iSEE` will generate a so called Hinton plot.
@@ -112,6 +120,10 @@ app <- iSEE(sce, list(
 ```
 </details>
 
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/exercise_02.png", delay=20)
+```
+
 # Exercise 3: Data parameters configuration - displaying multiple reduced dimension representations
 
 Using the `pbmc3k` data set, display both the tSNE and UMAP representations next to each other.
@@ -149,6 +161,10 @@ app <- iSEE(sce, initial = list(
 ```
 </details>
 
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/exercise_03.png", delay=20)
+```
+
 # Exercise 4: Data parameters configuration - displaying the expression of a specific gene across clusters
 
 Using the `pbmc3k` data set, plot the distribution of the logcount values for the gene `CD74` in each of the clusters.
@@ -184,6 +200,10 @@ app <- iSEE(sce, initial = list(
 ))
 ```
 </details>
+
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/exercise_04.png", delay=20)
+```
 
 # Exercise 5: Visual parameters configuration - coloring reduced dimension representations by cell annotation
 
@@ -441,5 +461,4 @@ app <- iSEE(sce, initial = list(
 ))
 ```
 </details>
-
 
