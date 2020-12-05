@@ -55,7 +55,7 @@ app <- iSEE(sce, list(
 ```
 </details>
 
-```{r}
+```{r, echo=FALSE}
 SCREENSHOT("screenshots/exercise_01.png", delay=20)
 ```
 
@@ -97,7 +97,7 @@ app <- iSEE(sce, list(
 ```
 </details>
 
-```{r}
+```{r, echo=FALSE}
 SCREENSHOT("screenshots/exercise_02.png", delay=20)
 ```
 
@@ -138,7 +138,7 @@ app <- iSEE(sce, initial = list(
 ```
 </details>
 
-```{r}
+```{r, echo=FALSE}
 SCREENSHOT("screenshots/exercise_03.png", delay=20)
 ```
 
@@ -178,7 +178,7 @@ app <- iSEE(sce, initial = list(
 ```
 </details>
 
-```{r}
+```{r, echo=FALSE}
 SCREENSHOT("screenshots/exercise_04.png", delay=20)
 ```
 
@@ -227,6 +227,6 @@ app <- iSEE(sce, initial = list(
 ```
 </details>
 
-```{r}
+```{r, echo=FALSE}
 SCREENSHOT("screenshots/exercise_05.png", delay=20)
 ```
