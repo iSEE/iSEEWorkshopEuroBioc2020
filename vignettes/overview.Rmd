@@ -29,6 +29,7 @@ knitr::opts_chunk$set(
 )
 suppressPackageStartupMessages({
     require(BiocStyle)
+    require(iSEE)
 })
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
@@ -40,16 +41,17 @@ SCREENSHOT <- function(x, ...) knitr::include_graphics(x)
 # Introduction
 
 This vignette provides an overview of the graphical interface of `r Biocpkg("iSEE")` applications.
-To follow along, make sure that you have launched an `r Biocpkg("iSEE")` instance as described in the code block at the end of the previous section.
-Note that in the default configuration, the panels do not look exactly like the ones shown in the screenshots below.
+To follow along, make sure that you launch the default `r Biocpkg("iSEE")` instance as described in the next code block at the start of the [following section](#default-app).
+
+Note that in the default configuration, the panels do not look exactly like the ones shown in the screenshots that you will see below.
 For example, data points are not immediately colored, and the default annotation variables displayed by each panel may differ.
-Later sections of this workshop demonstrate how to modify the content of the panels and how they are displayed. 
+The [hands-on exercises](exercises.html) workshop of this workshop will demonstrate how to modify the content of the panels, and how they are displayed. 
 
 Note that for simplicity, we typically refer to a `SummarizedExperiment` in this workshop; however, `r Biocpkg("iSEE")` works seamlessly for objects of any class extending `SummarizedExperiment` as well (e.g., `SingleCellExperiment`, `DESeqDataSet`).
-That said, some types of panels -- such as the `Reduced dimension plot` -- are only available for objects that contain a `reducedDim` slot (in particular, `SingleCellExperiment` objects); the basic `SummarizedExperiment` class does not contain this slot.
+That said, some types of panels -- such as the `r .fullName(ReducedDimensionPlot())` -- are only available for objects that contain a `reducedDim` slot (in particular, `SingleCellExperiment` objects); the basic `SummarizedExperiment` class does not contain this slot.
 In this workshop, we refer to the rows of the `SummarizedExperiment` object as 'features' (these can be genes, transcripts, genomic regions, etc) and to the columns as 'samples' (which, in our example data set, are single cells).
 
-# The default iSEE app
+# The default iSEE app {#default-app}
 
 Using the demonstration data set, we can launch an `r Biocpkg("iSEE")` instance for exploring this data set using the `iSEE()` function without any further argument.
 This will produce an app using the default configuration; that is, the app instance will include one panel of each built-in class for which the relevant information is available in the `SummarizedExperiment` object.
@@ -92,15 +94,15 @@ SCREENSHOT("screenshots/isee-no-se.png", delay=10)
 
 # The built-in panel types {#user-interface}
 
-The `r Biocpkg("iSEE")` user interface consists of a number of panels, each displaying the data provided in the `SummarizedExperiment` from a specific perspective.
-There are 8 standard panel types; 6 plot panels and 2 table panels, all showcased in the figure shown at the end of section [Preparation of example scRNAseq data](#prepare-scrnaseq-data).
+The `r Biocpkg("iSEE")` user interface (UI) consists of a number of panels, each displaying the data provided in the `SummarizedExperiment` from a specific perspective.
+There are 8 standard panel types; 6 plot panels and 2 table panels, all showcased in the figure shown at the start of the [previous section](#default-app).
 In the default configuration, one panel of each type is included when launching the `r Biocpkg("iSEE")` user interface.
-However, users are free to rearrange, resize, remove or add panels freely, as described in the later section [Configuration of the app interface](#configuration-ui).
+However, users are free to rearrange, resize, remove or add panels freely, as demonstrated in the separate vignette of [workshop exercises](exercises.html).
 We provide a brief overview of each panel type in the following subsections.
 
 In addition to the 8 standard panel types included in `r Biocpkg("iSEE")`, users can create custom panels (both plots and tables).
 Moreover, the `r Biocpkg("iSEEu")` (iSEE universe) package contains additional panel types. 
-The creation and configuration of custom panels is discussed later, in the dedicated section [Custom panels](#custom-panels).
+The creation and configuration of custom panels is also demonstrated in a series of [workshop advanced exercises](exercises.html).
 
 <!--
 This is perhaps not very pedagogical - the app will not look like the one below if it is just opened with the object created above.
@@ -108,7 +110,7 @@ But it's nice to show the capabilities of the panels too, not just the default s
 I added a few sentences to the introduction of this section to try to address this.
 --> 
 
-## Reduced dimension plot {#reddimplot}
+## `r .fullName(ReducedDimensionPlot())` {#reddimplot}
 
 The reduced dimension plot can display any reduced dimension representation that is present in the `reducedDim` slot of the `SingleCellExperiment` object.
 
@@ -126,7 +128,7 @@ app <- iSEE(sce, initial = list(ReducedDimensionPlot(
 SCREENSHOT("screenshots/isee-reduceddimensionplot.png", delay=10)
 ```
 
-## Column data plot {#coldataplot}
+## `r .fullName(ColumnDataPlot())` {#coldataplot}
 
 The column data plot can display one or two of the provided column annotations (from the `colData` slot).
 Depending on the class of the selected annotations, the panel shows either a scatter plot, a violin plot, or a Hinton diagram [@Hinton1991-hintondiagram; @Bremner1994-hintonplots].
@@ -143,7 +145,7 @@ app <- iSEE(sce, initial = list(ColumnDataPlot(
 SCREENSHOT("screenshots/isee-columndataplot.png", delay=10)
 ```
 
-## Row data plot {#rowdataplot}
+## `r .fullName(RowDataPlot())` {#rowdataplot}
 
 Analogous to the [column data plot](#coldataplot) above, the row data plot displays one or two of the provided row annotations (from the `rowData` slot).
 Depending on the class of the selected annotations, the panel displays either a scatter plot, a violin plot, or a Hinton plot.
@@ -159,7 +161,7 @@ app <- iSEE(sce, initial = list(RowDataPlot(
 SCREENSHOT("screenshots/isee-rowdataplot.png", delay=10)
 ```
 
-## Complex heatmap {#heatmap}
+## `r .fullName(ComplexHeatmapPlot())` {#heatmap}
 
 The complex heatmap panel displays, for any assay, the observed values for a subset of the features across the samples.
 
@@ -175,7 +177,7 @@ app <- iSEE(sce, initial = list(ComplexHeatmapPlot(
 SCREENSHOT("screenshots/isee-complexheatmapplot.png", delay=10)
 ```
 
-## Feature assay plot {#featassayplot}
+## `r .fullName(FeatureAssayPlot())` {#featassayplot}
 
 The feature assay plot displays the observed values for one feature across the samples.
 It is also possible to plot the observed values for two features, in a scatter plot.
@@ -193,9 +195,9 @@ app <- iSEE(sce, initial = list(FeatureAssayPlot(
 SCREENSHOT("screenshots/isee-featureassayplot.png", delay=10)
 ```
 
-## Sample assay plot {#sampassayplot}
+## `r .fullName(SampleAssayPlot())` {#sampassayplot}
 
-Analogous to the [feature assay plot](#featassayplot) above, the sample assay plot shows the observed values for all features, for one of the samples.
+Analogous to the [`r .fullName(FeatureAssayPlot())`](#featassayplot) above, the `r .fullName(SampleAssayPlot())` shows the observed values for all features, for one of the samples.
 It is also possible to plot the observed values for two samples, in a scatter plot.
 
 ```{r, message=FALSE, echo = FALSE}
@@ -210,7 +212,7 @@ app <- iSEE(sce, initial = list(SampleAssayPlot(
 SCREENSHOT("screenshots/isee-sampleassayplot.png", delay=10)
 ```
 
-## Row data table {#rowdatatable}
+## `r .fullName(RowDataTable())` {#rowdatatable}
 
 The row data table displays all information provided in the `rowData` slot of the `SummarizedExperiment` object, leveraging the interactivity provided by the `r CRANpkg("DT")` package.
 
@@ -222,9 +224,9 @@ app <- iSEE(sce, initial = list(RowDataTable(PanelWidth = 12L)))
 SCREENSHOT("screenshots/isee-rowdatatable.png", delay=10)
 ```
 
-## Column data table {#coldatatable}
+## `r .fullName(ColumnDataTable())` {#coldatatable}
 
-Analogous to the [row data table](#rowdatatable) above, the column data table displays all information provided in the `colData` slot of the `SummarizedExperiment` object.
+Analogous to the [`r .fullName(RowDataTable())`](#rowdatatable) above, the column data table displays all information provided in the `colData` slot of the `SummarizedExperiment` object.
 
 ```{r, message=FALSE, echo = FALSE}
 app <- iSEE(sce, initial = list(ColumnDataTable(PanelWidth = 12L)))
@@ -276,7 +278,7 @@ SCREENSHOT("screenshots/isee-columndataplot-visualparameters.png", delay=10)
 
 The `Selection parameters` collapsible box provides controls to transfer selections of points (features or samples) between panels.
 
-We discuss point transmission in more detail [later in this workshop](#transmit-point-selections).
+We demonstrate examples of point transmission in the separate vignette of [workshop exercises](exercises.html)
 
 ```{r, message=FALSE, echo = FALSE}
 app <- iSEE(sce, initial = list(ReducedDimensionPlot(
@@ -293,8 +295,6 @@ SCREENSHOT("screenshots/isee-reduceddimensionplot-selectionparameters.png", dela
 # Additional controls {#additional-controls}
 
 At the top-right corner of the iSEE application, users can find additional controls for reproducibility, configuration, and help.
-Each of these is discussed in more detail later in this workshop.
-Links are provided in the last column of the table below.
 
 ```{r, echo = FALSE, eval = TRUE}
 panel_organization_fig <- "controls/PanelOrganization.png"
@@ -305,7 +305,139 @@ additional_info_fig <- "controls/AdditionalInfo.png"
 
 |              |            |                                        |
 |--------------|:----------:|----------------------------------------|
-| Organization | `r knitr::include_graphics(panel_organization_fig, dpi = 180)` | [Organize panels](#configuration-ui) <br> [Examine panel chart](#transmit-point-selections) |
-| Export        | `r knitr::include_graphics(export_fig, dpi = 180)`       | [Download panel output](#download-output) <br> [Extract R code](#reproducibility) <br> [Display panel settings](#configuration-ui) |
-| Documentation      | `r knitr::include_graphics(documentation_fig, dpi = 180)`     | [Quick tour](#sharing-tours) <br> [Open the vignette](#more-resources) |
-| Additional info    | `r knitr::include_graphics(additional_info_fig, dpi = 180)`    | [About this session](#reproducibility) <br> [About iSEE](#more-resources) |
+| Organization | `r knitr::include_graphics(panel_organization_fig, dpi = 180)` | [Organize panels](#organize-panels) <br> [Examine panel chart](#examine-panel-chart) |
+| Export        | `r knitr::include_graphics(export_fig, dpi = 180)`       | [Download panel output](#download-output) <br> [Extract R code](#extract-r-code) <br> [Display panel settings](#display-panel-settings) |
+| Documentation      | `r knitr::include_graphics(documentation_fig, dpi = 180)`     | [Quick tour](#quick-tour) <br> [Open the vignette](#browse-vignettes) |
+| Additional info    | `r knitr::include_graphics(additional_info_fig, dpi = 180)`    | [About this session](#app-session-info) <br> [About iSEE](#about-isee) |
+
+## Organize panels {#organize-panels}
+
+As mentioned above, the default behaviour of the `iSEE()` function is to launch an instance of the user interface that displays one panel of each of the standard types (provided the underlying data is available, e.g. for reduced dimension plots the `reducedDim` slot is required).
+However, in some cases it is desirable to have multiple panels of the same type, and/or exclude some panel types.
+
+In order to accommodate such situations, users can add, remove, change the order of and resize all panels via the `Organization` menu in the top-right corner.
+
+Clicking in the selectize box listing all current panels will present you with a drop-down menu from which you can choose additional panels to add.
+Similarly, panels can be removed by clicking on the <i class="fa fa-times"></i> icon associated with the panel name.
+
+Each panel can be individually resized by changing the width and height.
+Note that the total width of a row in the interface is 12 units.
+When the width of a panel is greater than the space available, the panel is moved to a new row.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/panel-organization.png", dpi = 180)
+```
+
+## Linking panels and transmitting point selections {#examine-panel-chart}
+
+When exploring data, it is often useful to be able to select a subset of points and investigate different aspects of their characteristic features.
+In `r Biocpkg("iSEE")`, this can be achieved by _selecting_ points in one panel, and _transmitting_ this selection to one or more other panels.
+
+The brushing and point selection can also be programmatically preconfigured.
+
+The button `Examine panel chart` display a graph that reports any active point transmission between panels in the app.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/panel-graph.png", dpi = 180)
+```
+
+## Download panel output {#download-output}
+
+The `Download panel output` button opens a modal window listing all the current panels in the app.
+Checkboxes allow users to select any subset of panels to export.
+Finally, clicking the `Download` button in that modal will prompt the app to save plots to PDF files, tables to CSV files, package the set of files in a ZIP archive that users can download and save on their computer.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/panel-download.png", dpi = 180)
+```
+
+## Extract R code {#extract-r-code}
+
+The fact that data exploration is done interactively is no reason to forego reproducibility! 
+To this end, `r Biocpkg("iSEE")` lets you export the exact R code used to create each of the currently visible plots.
+
+Importantly, the script reported by `r Biocpkg("iSEE")` contains a short preamble needed to set up variable names that are used in individual panels, including active brushes used to transfer point selections.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/code-tracker.png", dpi = 180)
+```
+
+## Display panel settings {#display-panel-settings}
+
+It can take a great amount of time to achieve a satisfactory panel configuration.
+To avoid the need to manually organize the panels each time the app is opened, `r Biocpkg("iSEE")` offers the possibility to export code that can be reused later to
+programmatically specify how the app is initialized, as well as to inspect and export the current panel settings for future use.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/panel-settings.png", dpi = 180)
+```
+
+## Quick tour {#quick-tour}
+
+One important aspect of visualization is the ability to share your insights with others. 
+A powerful way of easily getting people unfamiliar with your data up to speed is to provide a walkthrough of the interface and the different types of plots that are displayed. 
+With `r Biocpkg("iSEE")`, this can be achieved using _tours_. 
+To configure a tour, you need to create a text file with two columns; named `element` and `intro`, with the former describing the UI element to highlight in each step, and the latter providing the descriptive text that will be displayed.
+
+Clicking the `Quick tour` button launches an interactive tour of the interface using the `r BiocStyle::CRANpkg("rintrojs")` package, highlighting specific elements of the user interface, labeled with information and instructions guiding users through panels and tasks specific to individual apps.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/quick-tour.png", dpi = 180)
+```
+
+You can see a live example of a more complex tour in action, visit <https://marionilab.cruk.cam.ac.uk/iSEE_pbmc4k/>.
+The code used to create this app and the associated tour is available from <https://github.com/iSEE/iSEE2018/tree/master/tours/pbmc4k>.
+
+## Open the vignette {#browse-vignettes}
+
+The user interface navigation bar also includes this button to open the introductory vignette to `r Biocpkg("iSEE")` in your we browser.
+
+Depending on the version of `r Biocpkg("iSEE")` that you are using, this will adaptively lead you to a locally built vignette present onyour compute, or the _release_ or the _devel_ version of the Bioconductor package landing page, e.g. <`r BiocStyle::Biocpkg("iSEE", vignette = "basic.html", label = "release")`>.
+
+## Session information {#app-session-info}
+
+This button displays the output of `sessionInfo()`, which is a useful piece of information to report when reporting an issue with an app.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/session-info.png", dpi = 180)
+```
+
+## About iSEE {#about-isee}
+
+This button provides information about the authors of `r Biocpkg("iSEE")`, as well as citation information.
+
+If you use this package, please use the following citation information:
+
+> Rue-Albrecht K, Marini F, Soneson C, Lun ATL (2018). “iSEE: Interactive SummarizedExperiment Explorer.” _F1000Research_, *7*,
+> 741. doi: 10.12688/f1000research.14966.1 (URL: https://doi.org/10.12688/f1000research.14966.1).
+
+A BibTeX entry for LaTeX users is:
+
+```
+@Article{,
+  title = {iSEE: Interactive SummarizedExperiment Explorer},
+  author = {Kevin Rue-Albrecht and Federico Marini and Charlotte Soneson and Aaron T. L. Lun},
+  publisher = {F1000 Research, Ltd.},
+  journal = {F1000Research},
+  year = {2018},
+  month = {Jun},
+  volume = {7},
+  pages = {741},
+  doi = {10.12688/f1000research.14966.1},
+}
+```
+
+# Additional resources {#additional-resources}
+
+A lot of materials have been developed, from the first use of `r Biocpkg("iSEE")` to contributions of new panel classes in separate downstream packages.
+
+* The bookdown _Extending iSEE_: https://isee.github.io/iSEE-book/
+* Bioconductor landing page: https://bioconductor.org/packages/iSEE/
+* Publication (F1000Research, 2018): https://f1000research.com/articles/7-741/v1
+* Deployed examples: https://marionilab.cruk.cam.ac.uk/, code at https://github.com/iSEE/iSEE2018
+  * Further deployments in the https://github.com/iSEE/iSEE_instances repo
+  * `r Biocpkg("iSEE")` in production: http://www.teichlab.org/singlecell-treg
+* Custom panel examples: https://github.com/iSEE/iSEE_custom
+* Development version (bug reports etc): https://github.com/iSEE/iSEE
+
+# References {-}
