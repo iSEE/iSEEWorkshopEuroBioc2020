@@ -315,6 +315,10 @@ additional_info_fig <- "controls/AdditionalInfo.png"
 As mentioned above, the default behaviour of the `iSEE()` function is to launch an instance of the user interface that displays one panel of each of the standard types (provided the underlying data is available, e.g. for reduced dimension plots the `reducedDim` slot is required).
 However, in some cases it is desirable to have multiple panels of the same type, and/or exclude some panel types.
 
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/panel-organization.png", dpi = 180)
+```
+
 In order to accommodate such situations, users can add, remove, change the order of and resize all panels via the `Organization` menu in the top-right corner.
 
 Clicking in the selectize box listing all current panels will present you with a drop-down menu from which you can choose additional panels to add.
@@ -333,11 +337,19 @@ The brushing and point selection can also be programmatically preconfigured.
 
 The button `Examine panel chart` display a graph that reports any active point transmission between panels in the app.
 
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/panel-graph.png", dpi = 180)
+```
+
 ## Download panel output {#download-output}
 
 The `Download panel output` button opens a modal window listing all the current panels in the app.
 Checkboxes allow users to select any subset of panels to export.
 Finally, clicking the `Download` button in that modal will prompt the app to save plots to PDF files, tables to CSV files, package the set of files in a ZIP archive that users can download and save on their computer.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/panel-download.png", dpi = 180)
+```
 
 ## Extract R code {#extract-r-code}
 
@@ -346,11 +358,19 @@ To this end, `r Biocpkg("iSEE")` lets you export the exact R code used to create
 
 Importantly, the script reported by `r Biocpkg("iSEE")` contains a short preamble needed to set up variable names that are used in individual panels, including active brushes used to transfer point selections.
 
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/code-tracker.png", dpi = 180)
+```
+
 ## Display panel settings {#display-panel-settings}
 
 It can take a great amount of time to achieve a satisfactory panel configuration.
 To avoid the need to manually organize the panels each time the app is opened, `r Biocpkg("iSEE")` offers the possibility to export code that can be reused later to
 programmatically specify how the app is initialized, as well as to inspect and export the current panel settings for future use.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/panel-settings.png", dpi = 180)
+```
 
 ## Quick tour {#quick-tour}
 
@@ -361,18 +381,26 @@ To configure a tour, you need to create a text file with two columns; named `ele
 
 Clicking the `Quick tour` button launches an interactive tour of the interface using the `r BiocStyle::CRANpkg("rintrojs")` package, highlighting specific elements of the user interface, labeled with information and instructions guiding users through panels and tasks specific to individual apps.
 
-To see an example of a more complex tour in action, visit <https://marionilab.cruk.cam.ac.uk/iSEE_pbmc4k/>.
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/panel-settings.png", dpi = 180)
+```
+
+You can see a live example of a more complex tour in action, visit <https://marionilab.cruk.cam.ac.uk/iSEE_pbmc4k/>.
 The code used to create this app and the associated tour is available from <https://github.com/iSEE/iSEE2018/tree/master/tours/pbmc4k>.
 
 ## Open the vignette {#browse-vignettes}
 
 The user interface navigation bar also includes this button to open the introductory vignette to `r Biocpkg("iSEE")` in your we browser.
 
-Depending on the version of `r Biocpkg("iSEE")` that you are using, this will adaptively lead you to the _release_ or the _devel_ version of the Bioconductor package landing page.
+Depending on the version of `r Biocpkg("iSEE")` that you are using, this will adaptively lead you to a locally built vignette present onyour compute, or the _release_ or the _devel_ version of the Bioconductor package landing page, e.g. <`r BiocStyle::Biocpkg("iSEE", vignette = "basic.html")`>.
 
 ## Session information {#app-session-info}
 
 This button displays the output of `sessionInfo()`, which is a useful piece of information to report when reporting an issue with an app.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/session-info.png", dpi = 180)
+```
 
 ## About iSEE {#about-isee}
 
