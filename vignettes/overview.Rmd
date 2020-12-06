@@ -315,10 +315,6 @@ additional_info_fig <- "controls/AdditionalInfo.png"
 As mentioned above, the default behaviour of the `iSEE()` function is to launch an instance of the user interface that displays one panel of each of the standard types (provided the underlying data is available, e.g. for reduced dimension plots the `reducedDim` slot is required).
 However, in some cases it is desirable to have multiple panels of the same type, and/or exclude some panel types.
 
-```{r, echo=FALSE, out.width='100%'}
-knitr::include_graphics("modals/panel-organization.png", dpi = 180)
-```
-
 In order to accommodate such situations, users can add, remove, change the order of and resize all panels via the `Organization` menu in the top-right corner.
 
 Clicking in the selectize box listing all current panels will present you with a drop-down menu from which you can choose additional panels to add.
@@ -327,6 +323,10 @@ Similarly, panels can be removed by clicking on the <i class="fa fa-times"></i> 
 Each panel can be individually resized by changing the width and height.
 Note that the total width of a row in the interface is 12 units.
 When the width of a panel is greater than the space available, the panel is moved to a new row.
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("modals/panel-organization.png", dpi = 180)
+```
 
 ## Linking panels and transmitting point selections {#examine-panel-chart}
 
