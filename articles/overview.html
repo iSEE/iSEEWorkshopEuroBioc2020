@@ -110,12 +110,13 @@
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>This vignette provides an overview of the graphical interface of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> applications. To follow along, make sure that you have launched an <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> instance as described in the code block at the end of the previous section. Note that in the default configuration, the panels do not look exactly like the ones shown in the screenshots below. For example, data points are not immediately colored, and the default annotation variables displayed by each panel may differ. Later sections of this workshop demonstrate how to modify the content of the panels and how they are displayed.</p>
-<p>Note that for simplicity, we typically refer to a <code>SummarizedExperiment</code> in this workshop; however, <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> works seamlessly for objects of any class extending <code>SummarizedExperiment</code> as well (e.g., <code>SingleCellExperiment</code>, <code>DESeqDataSet</code>). That said, some types of panels – such as the <code>Reduced dimension plot</code> – are only available for objects that contain a <code>reducedDim</code> slot (in particular, <code>SingleCellExperiment</code> objects); the basic <code>SummarizedExperiment</code> class does not contain this slot. In this workshop, we refer to the rows of the <code>SummarizedExperiment</code> object as ‘features’ (these can be genes, transcripts, genomic regions, etc) and to the columns as ‘samples’ (which, in our example data set, are single cells).</p>
+<p>This vignette provides an overview of the graphical interface of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> applications. To follow along, make sure that you launch the default <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> instance as described in the next code block at the start of the <a href="#default-app">following section</a>.</p>
+<p>Note that in the default configuration, the panels do not look exactly like the ones shown in the screenshots that you will see below. For example, data points are not immediately colored, and the default annotation variables displayed by each panel may differ. The <a href="exercises.html">hands-on exercises</a> workshop of this workshop will demonstrate how to modify the content of the panels, and how they are displayed.</p>
+<p>Note that for simplicity, we typically refer to a <code>SummarizedExperiment</code> in this workshop; however, <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> works seamlessly for objects of any class extending <code>SummarizedExperiment</code> as well (e.g., <code>SingleCellExperiment</code>, <code>DESeqDataSet</code>). That said, some types of panels – such as the Reduced dimension plot – are only available for objects that contain a <code>reducedDim</code> slot (in particular, <code>SingleCellExperiment</code> objects); the basic <code>SummarizedExperiment</code> class does not contain this slot. In this workshop, we refer to the rows of the <code>SummarizedExperiment</code> object as ‘features’ (these can be genes, transcripts, genomic regions, etc) and to the columns as ‘samples’ (which, in our example data set, are single cells).</p>
 </div>
-<div id="the-default-isee-app" class="section level1">
+<div id="default-app" class="section level1">
 <h1 class="hasAnchor">
-<a href="#the-default-isee-app" class="anchor"></a>The default iSEE app</h1>
+<a href="#default-app" class="anchor"></a>The default iSEE app</h1>
 <p>Using the demonstration data set, we can launch an <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> instance for exploring this data set using the <code><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE()</a></code> function without any further argument. This will produce an app using the default configuration; that is, the app instance will include one panel of each built-in class for which the relevant information is available in the <code>SummarizedExperiment</code> object.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/iSEE/iSEE">iSEE</a></span><span class="op">)</span>
@@ -136,8 +137,8 @@
 <div id="user-interface" class="section level1">
 <h1 class="hasAnchor">
 <a href="#user-interface" class="anchor"></a>The built-in panel types</h1>
-<p>The <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> user interface consists of a number of panels, each displaying the data provided in the <code>SummarizedExperiment</code> from a specific perspective. There are 8 standard panel types; 6 plot panels and 2 table panels, all showcased in the figure shown at the end of section <a href="#prepare-scrnaseq-data">Preparation of example scRNAseq data</a>. In the default configuration, one panel of each type is included when launching the <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> user interface. However, users are free to rearrange, resize, remove or add panels freely, as described in the later section <a href="#configuration-ui">Configuration of the app interface</a>. We provide a brief overview of each panel type in the following subsections.</p>
-<p>In addition to the 8 standard panel types included in <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em>, users can create custom panels (both plots and tables). Moreover, the <em><a href="https://bioconductor.org/packages/3.13/iSEEu">iSEEu</a></em> (iSEE universe) package contains additional panel types. The creation and configuration of custom panels is discussed later, in the dedicated section <a href="#custom-panels">Custom panels</a>.</p>
+<p>The <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> user interface (UI) consists of a number of panels, each displaying the data provided in the <code>SummarizedExperiment</code> from a specific perspective. There are 8 standard panel types; 6 plot panels and 2 table panels, all showcased in the figure shown at the start of the <a href="#default-app">previous section</a>. In the default configuration, one panel of each type is included when launching the <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> user interface. However, users are free to rearrange, resize, remove or add panels freely, as demonstrated in the separate vignette of <a href="exercises.html">workshop exercises</a>. We provide a brief overview of each panel type in the following subsections.</p>
+<p>In addition to the 8 standard panel types included in <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em>, users can create custom panels (both plots and tables). Moreover, the <em><a href="https://bioconductor.org/packages/3.13/iSEEu">iSEEu</a></em> (iSEE universe) package contains additional panel types. The creation and configuration of custom panels is also demonstrated in a series of <a href="exercises.html">workshop advanced exercises</a>.</p>
 <!--
 This is perhaps not very pedagogical - the app will not look like the one below if it is just opened with the object created above.
 But it's nice to show the capabilities of the panels too, not just the default settings.
@@ -177,7 +178,7 @@ I added a few sentences to the introduction of this section to try to address th
 <div id="sampassayplot" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sampassayplot" class="anchor"></a>Sample assay plot</h2>
-<p>Analogous to the <a href="#featassayplot">feature assay plot</a> above, the sample assay plot shows the observed values for all features, for one of the samples. It is also possible to plot the observed values for two samples, in a scatter plot.</p>
+<p>Analogous to the <a href="#featassayplot">Feature assay plot</a> above, the Sample assay plot shows the observed values for all features, for one of the samples. It is also possible to plot the observed values for two samples, in a scatter plot.</p>
 <p><img src="screenshots/isee-sampleassayplot.png" width="100%"></p>
 </div>
 <div id="rowdatatable" class="section level2">
@@ -189,7 +190,7 @@ I added a few sentences to the introduction of this section to try to address th
 <div id="coldatatable" class="section level2">
 <h2 class="hasAnchor">
 <a href="#coldatatable" class="anchor"></a>Column data table</h2>
-<p>Analogous to the <a href="#rowdatatable">row data table</a> above, the column data table displays all information provided in the <code>colData</code> slot of the <code>SummarizedExperiment</code> object.</p>
+<p>Analogous to the <a href="#rowdatatable">Row data table</a> above, the column data table displays all information provided in the <code>colData</code> slot of the <code>SummarizedExperiment</code> object.</p>
 <p><img src="screenshots/isee-columndatatable.png" width="100%"></p>
 </div>
 </div>
@@ -213,44 +214,150 @@ I added a few sentences to the introduction of this section to try to address th
 <h2 class="hasAnchor">
 <a href="#selection-parameter-box" class="anchor"></a>‘Selection parameters’ collapsible box</h2>
 <p>The <code>Selection parameters</code> collapsible box provides controls to transfer selections of points (features or samples) between panels.</p>
-<p>We discuss point transmission in more detail <a href="#transmit-point-selections">later in this workshop</a>.</p>
+<p>We demonstrate examples of point transmission in the separate vignette of <a href="exercises.html">workshop exercises</a></p>
 <p><img src="screenshots/isee-reduceddimensionplot-selectionparameters.png" width="100%"></p>
 </div>
 </div>
 <div id="additional-controls" class="section level1">
 <h1 class="hasAnchor">
 <a href="#additional-controls" class="anchor"></a>Additional controls</h1>
-<p>At the top-right corner of the iSEE application, users can find additional controls for reproducibility, configuration, and help. Each of these is discussed in more detail later in this workshop. Links are provided in the last column of the table below.</p>
+<p>At the top-right corner of the iSEE application, users can find additional controls for reproducibility, configuration, and help.</p>
 <table class="table"><tbody>
 <tr class="odd">
 <td>Organization</td>
 <td align="center"><img src="controls/PanelOrganization.png" width="433"></td>
 <td>
-<a href="#configuration-ui">Organize panels</a> <br><a href="#transmit-point-selections">Examine panel chart</a>
+<a href="#organize-panels">Organize panels</a> <br><a href="#examine-panel-chart">Examine panel chart</a>
 </td>
 </tr>
 <tr class="even">
 <td>Export</td>
 <td align="center"><img src="controls/Export.png" width="386"></td>
 <td>
-<a href="#download-output">Download panel output</a> <br><a href="#reproducibility">Extract R code</a> <br><a href="#configuration-ui">Display panel settings</a>
+<a href="#download-output">Download panel output</a> <br><a href="#extract-r-code">Extract R code</a> <br><a href="#display-panel-settings">Display panel settings</a>
 </td>
 </tr>
 <tr class="odd">
 <td>Documentation</td>
 <td align="center"><img src="controls/Documentation.png" width="337"></td>
 <td>
-<a href="#sharing-tours">Quick tour</a> <br><a href="#more-resources">Open the vignette</a>
+<a href="#quick-tour">Quick tour</a> <br><a href="#browse-vignettes">Open the vignette</a>
 </td>
 </tr>
 <tr class="even">
 <td>Additional info</td>
 <td align="center"><img src="controls/AdditionalInfo.png" width="298"></td>
 <td>
-<a href="#reproducibility">About this session</a> <br><a href="#more-resources">About iSEE</a>
+<a href="#app-session-info">About this session</a> <br><a href="#about-isee">About iSEE</a>
 </td>
 </tr>
 </tbody></table>
+<div id="organize-panels" class="section level2">
+<h2 class="hasAnchor">
+<a href="#organize-panels" class="anchor"></a>Organize panels</h2>
+<p>As mentioned above, the default behaviour of the <code><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE()</a></code> function is to launch an instance of the user interface that displays one panel of each of the standard types (provided the underlying data is available, e.g. for reduced dimension plots the <code>reducedDim</code> slot is required). However, in some cases it is desirable to have multiple panels of the same type, and/or exclude some panel types.</p>
+<p>In order to accommodate such situations, users can add, remove, change the order of and resize all panels via the <code>Organization</code> menu in the top-right corner.</p>
+<p>Clicking in the selectize box listing all current panels will present you with a drop-down menu from which you can choose additional panels to add. Similarly, panels can be removed by clicking on the <i class="fa fa-times"></i> icon associated with the panel name.</p>
+<p>Each panel can be individually resized by changing the width and height. Note that the total width of a row in the interface is 12 units. When the width of a panel is greater than the space available, the panel is moved to a new row.</p>
+<p><img src="modals/panel-organization.png" width="100%"></p>
+</div>
+<div id="examine-panel-chart" class="section level2">
+<h2 class="hasAnchor">
+<a href="#examine-panel-chart" class="anchor"></a>Linking panels and transmitting point selections</h2>
+<p>When exploring data, it is often useful to be able to select a subset of points and investigate different aspects of their characteristic features. In <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em>, this can be achieved by <em>selecting</em> points in one panel, and <em>transmitting</em> this selection to one or more other panels.</p>
+<p>The brushing and point selection can also be programmatically preconfigured.</p>
+<p>The button <code>Examine panel chart</code> display a graph that reports any active point transmission between panels in the app.</p>
+<p><img src="modals/panel-graph.png" width="100%"></p>
+</div>
+<div id="download-output" class="section level2">
+<h2 class="hasAnchor">
+<a href="#download-output" class="anchor"></a>Download panel output</h2>
+<p>The <code>Download panel output</code> button opens a modal window listing all the current panels in the app. Checkboxes allow users to select any subset of panels to export. Finally, clicking the <code>Download</code> button in that modal will prompt the app to save plots to PDF files, tables to CSV files, package the set of files in a ZIP archive that users can download and save on their computer.</p>
+<p><img src="modals/panel-download.png" width="100%"></p>
+</div>
+<div id="extract-r-code" class="section level2">
+<h2 class="hasAnchor">
+<a href="#extract-r-code" class="anchor"></a>Extract R code</h2>
+<p>The fact that data exploration is done interactively is no reason to forego reproducibility! To this end, <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> lets you export the exact R code used to create each of the currently visible plots.</p>
+<p>Importantly, the script reported by <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> contains a short preamble needed to set up variable names that are used in individual panels, including active brushes used to transfer point selections.</p>
+<p><img src="modals/code-tracker.png" width="100%"></p>
+</div>
+<div id="display-panel-settings" class="section level2">
+<h2 class="hasAnchor">
+<a href="#display-panel-settings" class="anchor"></a>Display panel settings</h2>
+<p>It can take a great amount of time to achieve a satisfactory panel configuration. To avoid the need to manually organize the panels each time the app is opened, <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> offers the possibility to export code that can be reused later to programmatically specify how the app is initialized, as well as to inspect and export the current panel settings for future use.</p>
+<p><img src="modals/panel-settings.png" width="100%"></p>
+</div>
+<div id="quick-tour" class="section level2">
+<h2 class="hasAnchor">
+<a href="#quick-tour" class="anchor"></a>Quick tour</h2>
+<p>One important aspect of visualization is the ability to share your insights with others. A powerful way of easily getting people unfamiliar with your data up to speed is to provide a walkthrough of the interface and the different types of plots that are displayed. With <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em>, this can be achieved using <em>tours</em>. To configure a tour, you need to create a text file with two columns; named <code>element</code> and <code>intro</code>, with the former describing the UI element to highlight in each step, and the latter providing the descriptive text that will be displayed.</p>
+<p>Clicking the <code>Quick tour</code> button launches an interactive tour of the interface using the <em><a href="https://CRAN.R-project.org/package=rintrojs">rintrojs</a></em> package, highlighting specific elements of the user interface, labeled with information and instructions guiding users through panels and tasks specific to individual apps.</p>
+<p><img src="modals/quick-tour.png" width="100%"></p>
+<p>You can see a live example of a more complex tour in action, visit <a href="https://marionilab.cruk.cam.ac.uk/iSEE_pbmc4k/" class="uri">https://marionilab.cruk.cam.ac.uk/iSEE_pbmc4k/</a>. The code used to create this app and the associated tour is available from <a href="https://github.com/iSEE/iSEE2018/tree/master/tours/pbmc4k" class="uri">https://github.com/iSEE/iSEE2018/tree/master/tours/pbmc4k</a>.</p>
+</div>
+<div id="browse-vignettes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#browse-vignettes" class="anchor"></a>Open the vignette</h2>
+<p>The user interface navigation bar also includes this button to open the introductory vignette to <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> in your we browser.</p>
+<p>Depending on the version of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> that you are using, this will adaptively lead you to a locally built vignette present onyour compute, or the <em>release</em> or the <em>devel</em> version of the Bioconductor package landing page, e.g. &lt;<a href="https://bioconductor.org/packages/3.13/iSEE/vignettes/basic.html">release</a>&gt;.</p>
+</div>
+<div id="app-session-info" class="section level2">
+<h2 class="hasAnchor">
+<a href="#app-session-info" class="anchor"></a>Session information</h2>
+<p>This button displays the output of <code><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo()</a></code>, which is a useful piece of information to report when reporting an issue with an app.</p>
+<p><img src="modals/session-info.png" width="100%"></p>
+</div>
+<div id="about-isee" class="section level2">
+<h2 class="hasAnchor">
+<a href="#about-isee" class="anchor"></a>About iSEE</h2>
+<p>This button provides information about the authors of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em>, as well as citation information.</p>
+<p>If you use this package, please use the following citation information:</p>
+<blockquote>
+<p>Rue-Albrecht K, Marini F, Soneson C, Lun ATL (2018). “iSEE: Interactive SummarizedExperiment Explorer.” <em>F1000Research</em>, <em>7</em>, 741. doi: 10.12688/f1000research.14966.1 (URL: <a href="https://doi.org/10.12688/f1000research.14966.1" class="uri">https://doi.org/10.12688/f1000research.14966.1</a>).</p>
+</blockquote>
+<p>A BibTeX entry for LaTeX users is:</p>
+<pre><code>@Article{,
+  title = {iSEE: Interactive SummarizedExperiment Explorer},
+  author = {Kevin Rue-Albrecht and Federico Marini and Charlotte Soneson and Aaron T. L. Lun},
+  publisher = {F1000 Research, Ltd.},
+  journal = {F1000Research},
+  year = {2018},
+  month = {Jun},
+  volume = {7},
+  pages = {741},
+  doi = {10.12688/f1000research.14966.1},
+}</code></pre>
+</div>
+</div>
+<div id="additional-resources" class="section level1">
+<h1 class="hasAnchor">
+<a href="#additional-resources" class="anchor"></a>Additional resources</h1>
+<p>A lot of materials have been developed, from the first use of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> to contributions of new panel classes in separate downstream packages.</p>
+<ul>
+<li>The bookdown <em>Extending iSEE</em>: <a href="https://isee.github.io/iSEE-book/" class="uri">https://isee.github.io/iSEE-book/</a>
+</li>
+<li>Bioconductor landing page: <a href="https://bioconductor.org/packages/iSEE/" class="uri">https://bioconductor.org/packages/iSEE/</a>
+</li>
+<li>Publication (F1000Research, 2018): <a href="https://f1000research.com/articles/7-741/v1" class="uri">https://f1000research.com/articles/7-741/v1</a>
+</li>
+<li>Deployed examples: <a href="https://marionilab.cruk.cam.ac.uk/" class="uri">https://marionilab.cruk.cam.ac.uk/</a>, code at <a href="https://github.com/iSEE/iSEE2018" class="uri">https://github.com/iSEE/iSEE2018</a>
+<ul>
+<li>Further deployments in the <a href="https://github.com/iSEE/iSEE_instances" class="uri">https://github.com/iSEE/iSEE_instances</a> repo</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> in production: <a href="http://www.teichlab.org/singlecell-treg" class="uri">http://www.teichlab.org/singlecell-treg</a>
+</li>
+</ul>
+</li>
+<li>Custom panel examples: <a href="https://github.com/iSEE/iSEE_custom" class="uri">https://github.com/iSEE/iSEE_custom</a>
+</li>
+<li>Development version (bug reports etc): <a href="https://github.com/iSEE/iSEE" class="uri">https://github.com/iSEE/iSEE</a>
+</li>
+</ul>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references">
 <div id="ref-Bremner1994-hintonplots">
 <p>Bremner, Frederick J, Stephen J Gotts, and Dina L Denham. 1994. “Hinton Diagrams: Viewing Connection Strengths in Neural Networks.” <em>Behav. Res. Methods Instrum. Comput.</em> 26 (2): 215–18.</p>
