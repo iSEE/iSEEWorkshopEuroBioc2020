@@ -180,6 +180,9 @@ library(SingleR)
 library(celldex)
 ```
 
+Here we assign the cell type according to the main classification scheme (`r `knitr::combine_words(names(table(ref_monaco$label.main)))`)
+
+```{r}
 ref_monaco <- MonacoImmuneData()
 
 pred_monaco_main <- SingleR(test = sce, ref = ref_monaco, labels = ref_monaco$label.main)
