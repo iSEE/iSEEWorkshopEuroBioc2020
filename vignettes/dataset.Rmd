@@ -175,8 +175,10 @@ Finally, we assign a label to each cell, based on their individual transcriptome
 For each prediction, we assign the labels values to a specific `colData` element
 
 ```{r}
+```{r message=FALSE}
 library(SingleR)
 library(celldex)
+```
 
 ref_monaco <- MonacoImmuneData()
 
