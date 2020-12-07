@@ -20,7 +20,17 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  cache = FALSE,
+  collapse = TRUE,
+  comment = "#>",
+  crop = NA
+)
+suppressPackageStartupMessages({
+    require(BiocStyle)
+})
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
 
 ```{r, eval=!exists("SCREENSHOT"), include=FALSE}
