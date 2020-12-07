@@ -174,22 +174,40 @@ sce
 Finally, we assign a label to each cell, based on their individual transcriptome profiles, using the `SingleR` method and the Monaco immune data (https://doi.org/10.1016/j.celrep.2019.01.041) as a reference.  
 For each prediction, we assign the labels values to a specific `colData` element
 
-```{r}
+```{r message=FALSE}
 library(SingleR)
 library(celldex)
-
 ref_monaco <- MonacoImmuneData()
+```
 
+Here we assign the cell type according to the main classification scheme 
+(this includes `r knitr::combine_words(names(table(ref_monaco$label.main)))`)
+
+```{r}
 pred_monaco_main <- SingleR(test = sce, ref = ref_monaco, labels = ref_monaco$label.main)
 table(pred_monaco_main$labels)
 sce$labels_main <- pred_monaco_main$labels
+```
+
+We do something similar with a more fine-grained classification, this time including the cell subtypes (e.g., for `r sort(unique(ref_monaco$label.main))[1]`, the subtypes would include `r knitr::combine_words(names(table((ref_monaco$label.main), (ref_monaco$label.fine))[1, ])[which(table((ref_monaco$label.main), (ref_monaco$label.fine))[1,] > 0)])`)
+
+```{r}
 pred_monaco_fine <- SingleR(test = sce, ref = ref_monaco, labels = ref_monaco$label.fine)
 table(pred_monaco_fine$labels)
 sce$labels_fine <- pred_monaco_fine$labels
+```
+
+Similarly, we use the information contained in the cell ontology labels.
+
+```{r}
 pred_monaco_ont <- SingleR(test = sce, ref = ref_monaco, labels = ref_monaco$label.ont)
 table(pred_monaco_ont$labels)
 sce$labels_ont <- pred_monaco_ont$labels
+```
 
+The next table shows the relationship between the coarse and fine grained assignments in the data at hand.
+
+```{r}
 table(sce$labels_main,
       sce$labels_fine)
 ```

@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = TRUE)
 SCREENSHOT <- function(x, ...) knitr::include_graphics(x)
 ```
 
-# Prepare the session
+# Prepare the session {-}
 
 Load packages and the demo data set.
 
