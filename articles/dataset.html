@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Preprocessing a data set for iSEE</h1>
                         <h4 class="author">Kevin Rue-Albrecht, Charlotte Soneson, Federico Marini, and Aaron Lun</h4>
             
-            <h4 class="date">December 06, 2020</h4>
+            <h4 class="date">December 07, 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/iSEE/iSEEWorkshopEuroBioc2020/blob/master/vignettes/dataset.Rmd"><code>vignettes/dataset.Rmd</code></a></small>
       <div class="hidden name"><code>dataset.Rmd</code></div>
@@ -271,34 +271,20 @@ For each prediction, we assign the labels values to a specific <code>colData</co
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LTLA/SingleR">SingleR</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LTLA/celldex">celldex</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'celldex'</span>
-<span class="co">#&gt; The following objects are masked from 'package:SingleR':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     BlueprintEncodeData, DatabaseImmuneCellExpressionData,</span>
-<span class="co">#&gt;     HumanPrimaryCellAtlasData, ImmGenData, MonacoImmuneData,</span>
-<span class="co">#&gt;     MouseRNAseqData, NovershternHematopoieticData</span>
-
-<span class="va">ref_monaco</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleR/man/datasets.html">MonacoImmuneData</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; snapshotDate(): 2020-12-03</span>
-<span class="co">#&gt; see ?celldex and browseVignettes('celldex') for documentation</span>
-<span class="co">#&gt; downloading 1 resources</span>
-<span class="co">#&gt; retrieving 1 resource</span>
-<span class="co">#&gt; loading from cache</span>
-<span class="co">#&gt; see ?celldex and browseVignettes('celldex') for documentation</span>
-<span class="co">#&gt; downloading 1 resources</span>
-<span class="co">#&gt; retrieving 1 resource</span>
-<span class="co">#&gt; loading from cache</span>
-
-<span class="va">pred_monaco_main</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleR/man/SingleR.html">SingleR</a></span><span class="op">(</span>test <span class="op">=</span> <span class="va">sce</span>, ref <span class="op">=</span> <span class="va">ref_monaco</span>, labels <span class="op">=</span> <span class="va">ref_monaco</span><span class="op">$</span><span class="va">label.main</span><span class="op">)</span>
+<span class="va">ref_monaco</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleR/man/datasets.html">MonacoImmuneData</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Here we assign the cell type according to the main classification scheme (this includes B cells, Basophils, CD4+ T cells, CD8+ T cells, Dendritic cells, Monocytes, Neutrophils, NK cells, Progenitors, and T cells)</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pred_monaco_main</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleR/man/SingleR.html">SingleR</a></span><span class="op">(</span>test <span class="op">=</span> <span class="va">sce</span>, ref <span class="op">=</span> <span class="va">ref_monaco</span>, labels <span class="op">=</span> <span class="va">ref_monaco</span><span class="op">$</span><span class="va">label.main</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">pred_monaco_main</span><span class="op">$</span><span class="va">labels</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;         B cells    CD4+ T cells    CD8+ T cells Dendritic cells       Monocytes </span>
 <span class="co">#&gt;             348             894             294              42             632 </span>
 <span class="co">#&gt;        NK cells     Progenitors         T cells </span>
 <span class="co">#&gt;             160              15             258</span>
-<span class="va">sce</span><span class="op">$</span><span class="va">labels_main</span> <span class="op">&lt;-</span> <span class="va">pred_monaco_main</span><span class="op">$</span><span class="va">labels</span>
-<span class="va">pred_monaco_fine</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleR/man/SingleR.html">SingleR</a></span><span class="op">(</span>test <span class="op">=</span> <span class="va">sce</span>, ref <span class="op">=</span> <span class="va">ref_monaco</span>, labels <span class="op">=</span> <span class="va">ref_monaco</span><span class="op">$</span><span class="va">label.fine</span><span class="op">)</span>
+<span class="va">sce</span><span class="op">$</span><span class="va">labels_main</span> <span class="op">&lt;-</span> <span class="va">pred_monaco_main</span><span class="op">$</span><span class="va">labels</span></code></pre></div>
+<p>We do something similar with a more fine-grained classification, this time including the cell subtypes (e.g., for B cells, the subtypes would include Exhausted B cells, Naive B cells, Non-switched memory B cells, Plasmablasts, and Switched memory B cells)</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pred_monaco_fine</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleR/man/SingleR.html">SingleR</a></span><span class="op">(</span>test <span class="op">=</span> <span class="va">sce</span>, ref <span class="op">=</span> <span class="va">ref_monaco</span>, labels <span class="op">=</span> <span class="va">ref_monaco</span><span class="op">$</span><span class="va">label.fine</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">pred_monaco_fine</span><span class="op">$</span><span class="va">labels</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;    Central memory CD8 T cells           Classical monocytes </span>
@@ -329,8 +315,10 @@ For each prediction, we assign the labels values to a specific <code>colData</co
 <span class="co">#&gt;                            65                           179 </span>
 <span class="co">#&gt;                Vd2 gd T cells </span>
 <span class="co">#&gt;                           130</span>
-<span class="va">sce</span><span class="op">$</span><span class="va">labels_fine</span> <span class="op">&lt;-</span> <span class="va">pred_monaco_fine</span><span class="op">$</span><span class="va">labels</span>
-<span class="va">pred_monaco_ont</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleR/man/SingleR.html">SingleR</a></span><span class="op">(</span>test <span class="op">=</span> <span class="va">sce</span>, ref <span class="op">=</span> <span class="va">ref_monaco</span>, labels <span class="op">=</span> <span class="va">ref_monaco</span><span class="op">$</span><span class="va">label.ont</span><span class="op">)</span>
+<span class="va">sce</span><span class="op">$</span><span class="va">labels_fine</span> <span class="op">&lt;-</span> <span class="va">pred_monaco_fine</span><span class="op">$</span><span class="va">labels</span></code></pre></div>
+<p>Similarly, we use the information contained in the cell ontology labels.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pred_monaco_ont</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleR/man/SingleR.html">SingleR</a></span><span class="op">(</span>test <span class="op">=</span> <span class="va">sce</span>, ref <span class="op">=</span> <span class="va">ref_monaco</span>, labels <span class="op">=</span> <span class="va">ref_monaco</span><span class="op">$</span><span class="va">label.ont</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">pred_monaco_ont</span><span class="op">$</span><span class="va">labels</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; CL:0000236 CL:0000545 CL:0000546 CL:0000623 CL:0000782 CL:0000784 CL:0000788 </span>
@@ -341,9 +329,10 @@ For each prediction, we assign the labels values to a specific <code>colData</co
 <span class="co">#&gt;         70        131         62         86         69         28          6 </span>
 <span class="co">#&gt; CL:0001044 CL:0001062 CL:0002038 CL:0002043 CL:0002393 </span>
 <span class="co">#&gt;          3         63        143         13        247</span>
-<span class="va">sce</span><span class="op">$</span><span class="va">labels_ont</span> <span class="op">&lt;-</span> <span class="va">pred_monaco_ont</span><span class="op">$</span><span class="va">labels</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">sce</span><span class="op">$</span><span class="va">labels_main</span>,
+<span class="va">sce</span><span class="op">$</span><span class="va">labels_ont</span> <span class="op">&lt;-</span> <span class="va">pred_monaco_ont</span><span class="op">$</span><span class="va">labels</span></code></pre></div>
+<p>The next table shows the relationship between the coarse and fine grained assignments in the data at hand.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">sce</span><span class="op">$</span><span class="va">labels_main</span>,
       <span class="va">sce</span><span class="op">$</span><span class="va">labels_fine</span><span class="op">)</span>
 <span class="co">#&gt;                  </span>
 <span class="co">#&gt;                   Central memory CD8 T cells Classical monocytes</span>
@@ -446,7 +435,7 @@ For each prediction, we assign the labels values to a specific <code>colData</co
 <span class="co">#&gt;   Progenitors             0              0          0         0              0</span>
 <span class="co">#&gt;   T cells                 7             17          2         0             92</span></code></pre></div>
 <p>This concludes the preparation of the data. We have now a <code>SingleCellExperiment</code> object that contains different types of abundance values, representations in reduced dimensions, as well as a range of row (feature) and column (cell) metadata.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://iSEE.github.io/iSEEWorkshopEuroBioc2020">iSEEWorkshopEuroBioc2020</a></span><span class="op">)</span>
 <span class="fu"><a href="../reference/load_demo_sce.html">cache_demo_sce</a></span><span class="op">(</span><span class="va">sce</span>, <span class="st">"pbmc3k"</span><span class="op">)</span>
 <span class="co">#&gt; Saving object to /github/home/.cache/iSEEWorkshopEuroBioc2020/pbmc3k.rds</span></code></pre></div>
