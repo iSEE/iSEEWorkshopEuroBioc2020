@@ -197,7 +197,7 @@ table(pred_monaco_fine$labels)
 sce$labels_fine <- pred_monaco_fine$labels
 ```
 
-Similarly, we use the information contained in the cell ontology labels...
+Similarly, we use the information contained in the cell ontology labels.
 
 ```{r}
 pred_monaco_ont <- SingleR(test = sce, ref = ref_monaco, labels = ref_monaco$label.ont)
