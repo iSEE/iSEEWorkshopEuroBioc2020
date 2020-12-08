@@ -238,7 +238,7 @@ SCREENSHOT("screenshots/isee-columndatatable.png", delay=10)
 
 # Collapsible boxes with display controls {#collapsible-boxes}
 
-## 'Data parameters' collapsible box {#data-parameters-box}
+## Data parameters {#data-parameters-box}
 
 Each plot panel type has a `Data parameters` collapsible box.
 This box has different content for each panel type, but in all cases it lets the user control the data that is displayed in the plot.
@@ -255,7 +255,7 @@ app <- iSEE(sce, initial = list(ColumnDataPlot(
 SCREENSHOT("screenshots/isee-columndataplot-dataparameters.png", delay=10)
 ```
 
-## 'Visual parameters' collapsible box {#visual-parameters-box}
+## Visual parameters {#visual-parameters-box}
 
 In contrast to the `Data parameters` collapsible box that lets users control _what_ is displayed in the plot, the `Visual parameters` box lets users control _how_ the information is displayed.
 
@@ -274,7 +274,7 @@ app <- iSEE(sce, initial = list(ColumnDataPlot(
 SCREENSHOT("screenshots/isee-columndataplot-visualparameters.png", delay=10)
 ```
 
-## 'Selection parameters' collapsible box {#selection-parameter-box}
+## Selection parameters {#selection-parameter-box}
 
 The `Selection parameters` collapsible box provides controls to transfer selections of points (features or samples) between panels.
 

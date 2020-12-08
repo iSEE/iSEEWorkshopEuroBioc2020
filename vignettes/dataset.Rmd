@@ -215,6 +215,10 @@ table(sce$labels_main,
 This concludes the preparation of the data.
 We have now a `SingleCellExperiment` object that contains different types of abundance values, representations in reduced dimensions, as well as a range of row (feature) and column (cell) metadata.
 
+# Cache data set
+
+We use a function implemented in this workshop package, to cache the precomputed object in an file that we will use as a starting point in the [exercises vignette](exercises.html).
+
 ```{r}
 library(iSEEWorkshopEuroBioc2020)
 cache_demo_sce(sce, "pbmc3k")
