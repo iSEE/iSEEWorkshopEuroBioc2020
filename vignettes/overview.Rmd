@@ -94,6 +94,8 @@ SCREENSHOT("screenshots/isee-no-se.png", delay=10)
 
 # The built-in panel types {#user-interface}
 
+## The panel hierarchy
+
 The `r Biocpkg("iSEE")` user interface (UI) consists of a number of panels, each displaying the data provided in the `SummarizedExperiment` from a specific perspective.
 There are 8 standard panel types; 6 plot panels and 2 table panels, all showcased in the figure shown at the start of the [previous section](#default-app).
 In the default configuration, one panel of each type is included when launching the `r Biocpkg("iSEE")` user interface.
@@ -103,6 +105,13 @@ We provide a brief overview of each panel type in the following subsections.
 In addition to the 8 standard panel types included in `r Biocpkg("iSEE")`, users can create custom panels (both plots and tables).
 Moreover, the `r Biocpkg("iSEEu")` (iSEE universe) package contains additional panel types. 
 The creation and configuration of custom panels is also demonstrated in a series of [workshop advanced exercises](exercises.html).
+
+Specifically, `r Biocpkg("iSEE")` panels are implemented as a hierarchy of S4 classes.
+Only _concrete_ classes (orange) may be instantiated as panels in the user interface; while _virtual_ classes (grey) provide functionality shared by families of panels (e.g., sample-oriented plots, feature-oriented tables).
+
+```{r, echo=FALSE, out.width='100%'}
+knitr::include_graphics("schematics/panel-classes.png", dpi = 180)
+```
 
 <!--
 This is perhaps not very pedagogical - the app will not look like the one below if it is just opened with the object created above.
