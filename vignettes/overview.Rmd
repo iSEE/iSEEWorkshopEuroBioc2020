@@ -392,7 +392,7 @@ The code used to create this app and the associated tour is available from <http
 
 The user interface navigation bar also includes this button to open the introductory vignette to `r Biocpkg("iSEE")` in your we browser.
 
-Depending on the version of `r Biocpkg("iSEE")` that you are using, this will adaptively lead you to a locally built vignette present onyour compute, or the _release_ or the _devel_ version of the Bioconductor package landing page, e.g. <`r BiocStyle::Biocpkg("iSEE", vignette = "basic.html", label = "release")`>.
+Depending on the version of `r Biocpkg("iSEE")` that you are using, this will adaptively lead you to a locally built vignette present on your computer, or the _release_ or the _devel_ version of the Bioconductor package landing page, e.g. <`r BiocStyle::Biocpkg("iSEE", vignette = "basic.html", label = "release")`>.
 
 ## Session information {#app-session-info}
 
@@ -431,7 +431,7 @@ A BibTeX entry for LaTeX users is:
 
 A lot of materials have been developed, from the first use of `r Biocpkg("iSEE")` to contributions of new panel classes in separate downstream packages.
 
-* The bookdown _Extending iSEE_: https://isee.github.io/iSEE-book/
+* The bookdown book on _Extending iSEE_: https://isee.github.io/iSEE-book/
 * Bioconductor landing page: https://bioconductor.org/packages/iSEE/
 * Publication (F1000Research, 2018): https://f1000research.com/articles/7-741/v1
 * Deployed examples: https://marionilab.cruk.cam.ac.uk/, code at https://github.com/iSEE/iSEE2018

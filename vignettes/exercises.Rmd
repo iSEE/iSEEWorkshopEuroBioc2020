@@ -20,19 +20,39 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  cache = FALSE,
+  collapse = TRUE,
+  comment = "#>",
+  crop = NA
+)
+suppressPackageStartupMessages({
+    require(BiocStyle)
+})
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
 
 ```{r, eval=!exists("SCREENSHOT"), include=FALSE}
 SCREENSHOT <- function(x, ...) knitr::include_graphics(x)
 ```
 
+# Introduction
+
+This vignette consists of a series of (independent) hands-on exercises, aimed at exploring the capabilities of `r Biocpkg("iSEE")` both interactively and programmatically.
+Each exercise consists of a short task and a screen shot of the desired appearance of the app instance that should be created. 
+For each exercise, we provide a set of hints, as well as detailed instructions on how to solve the exercise both interactively (by clicking in the app) and programmatically (by directly setting up and launching the desired app instance).
+
+For a general overview of the default `iSEE` panels, we refer to the [overview vignette](overview.html). 
+For all the details about the panel classes and the associated slots, we refer to the help pages for the respective panel class (e.g., `?ReducedDimensionPlot`).
+
 # Prepare the session {-}
 
-Load packages and the demo data set.
+Before starting with the exercises, we need to load the required packages and the demo data set.
 
 ```{r, message=FALSE}
 library(iSEE)
+library(iSEEu)
 library(iSEEWorkshopEuroBioc2020)
 sce <- load_demo_sce("pbmc3k")
 sce
@@ -47,7 +67,7 @@ Using the `pbmc3k` data set, create an app that contains only a reduced dimensio
 <ul>
 <li>Panels can be added, removed and resized via the `Organization` button in the top right corner of the app.</li>
 <li>To pre-specify the panels to be included in the app, use the `initial` argument to `iSEE()`.</li>
-<li>For more information about the different types of panels, see ...</li>
+<li>For more information about the different types of panels, see the [overview vignette](overview.html) or the help pages for the respective panel classes.</li>
 </ul>
 </details>
 
@@ -90,7 +110,7 @@ Using the `pbmc3k` data set, visualize the cell type assignment against the clus
 <summary>Hints</summary>
 <ul>
 <li>Column (in this case cell) annotations can be visualized using a `ColumnDataPlot` panel.</li>
-<li>The cluster labels are available in the `Cluster` column.</li>
+<li>The cluster labels are available in the `Cluster` column of `colData(sce)`.</li>
 <li>The cell type assignments are available in the `labels_fine` column of `colData(sce)` (more coarse-grained assignments are provided in the `labels_main` column).</li>
 <li>`iSEE` will automatically determine the plot type depending on the type of selected variables.</li>
 </ul>
@@ -214,7 +234,7 @@ Using the `pbmc3k` data set, display two tSNE representations next to each other
 <ul>
 <li>Reduced dimension representations can be displayed using `ReducedDimensionPlot` panels.</li>
 <li>The reduced dimension representations in the SingleCellExperiment object can be accessed by name (`reducedDimNames(sce)` lists the available representations).</li>
-<li>The cluster labels are available in the `Cluster` column.</li>
+<li>The cluster labels are available in the `Cluster` column of `colData(sce)`.</li>
 <li>Point attributes can be accessed in the `Visual parameters` collapsible box. To display or hide the possible options, check the corresponding checkboxes (`Color`, `Shape`, `Size`, `Point`).</li>
 </ul>
 </details>
@@ -480,6 +500,29 @@ app <- iSEE(sce, initial = list(
 
 ```{r, echo=FALSE}
 SCREENSHOT("screenshots/exercise_09.png", delay=20)
+```
+
+# Exercise 10: Using modes from `iSEEu`
+
+Using the `pbmc3k` data set, load `iSEEu` and use the `modeReducedDim` mode to open an app displaying all the reduced dimension representations stored in the SingleCellExperiment object. Color the representations by the cell type assignment.
+
+<details>
+<summary>Hints</summary>
+<ul>
+<li>The cell type assignments are available in the `labels_fine` column of `colData(sce)` (more coarse-grained assignments are provided in the `labels_main` column).</li>
+<li>The annotation to color by can be specified when calling `iSEEu::modeReducedDim()`.</li>
+</ul>
+</details>
+
+<details>
+<summary>Solution (programmatically)</summary>
+```{r}
+app <- modeReducedDim(sce, colorBy = "labels_main")
+```
+</details>
+
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/exercise_10.png", delay=20)
 ```
 
 # Session info
