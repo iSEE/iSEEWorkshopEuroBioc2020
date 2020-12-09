@@ -46,7 +46,7 @@ For each exercise, we provide a set of hints, as well as detailed instructions o
 For a general overview of the default `iSEE` panels, we refer to the [overview vignette](overview.html). 
 For all the details about the panel classes and the associated slots, we refer to the help pages for the respective panel class (e.g., `?ReducedDimensionPlot`).
 
-# Prepare the session
+# Prepare the session {-}
 
 Before starting with the exercises, we need to load the required packages and the demo data set.
 
