@@ -137,13 +137,19 @@
 <div id="user-interface" class="section level1">
 <h1 class="hasAnchor">
 <a href="#user-interface" class="anchor"></a>The built-in panel types</h1>
+<div id="the-panel-hierarchy" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-panel-hierarchy" class="anchor"></a>The panel hierarchy</h2>
 <p>The <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> user interface (UI) consists of a number of panels, each displaying the data provided in the <code>SummarizedExperiment</code> from a specific perspective. There are 8 standard panel types; 6 plot panels and 2 table panels, all showcased in the figure shown at the start of the <a href="#default-app">previous section</a>. In the default configuration, one panel of each type is included when launching the <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> user interface. However, users are free to rearrange, resize, remove or add panels freely, as demonstrated in the separate vignette of <a href="exercises.html">workshop exercises</a>. We provide a brief overview of each panel type in the following subsections.</p>
 <p>In addition to the 8 standard panel types included in <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em>, users can create custom panels (both plots and tables). Moreover, the <em><a href="https://bioconductor.org/packages/3.13/iSEEu">iSEEu</a></em> (iSEE universe) package contains additional panel types. The creation and configuration of custom panels is also demonstrated in a series of <a href="exercises.html">workshop advanced exercises</a>.</p>
+<p>Specifically, <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> panels are implemented as a hierarchy of S4 classes. Only <em>concrete</em> classes (orange) may be instantiated as panels in the user interface; while <em>virtual</em> classes (grey) provide functionality shared by families of panels (e.g., sample-oriented plots, feature-oriented tables).</p>
+<p><img src="schematics/panel-classes.png" width="100%"></p>
 <!--
 This is perhaps not very pedagogical - the app will not look like the one below if it is just opened with the object created above.
 But it's nice to show the capabilities of the panels too, not just the default settings.
 I added a few sentences to the introduction of this section to try to address this.
 -->
+</div>
 <div id="reddimplot" class="section level2">
 <h2 class="hasAnchor">
 <a href="#reddimplot" class="anchor"></a>Reduced dimension plot</h2>
@@ -300,7 +306,7 @@ I added a few sentences to the introduction of this section to try to address th
 <h2 class="hasAnchor">
 <a href="#browse-vignettes" class="anchor"></a>Open the vignette</h2>
 <p>The user interface navigation bar also includes this button to open the introductory vignette to <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> in your we browser.</p>
-<p>Depending on the version of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> that you are using, this will adaptively lead you to a locally built vignette present on your computer, or the <em>release</em> or the <em>devel</em> version of the Bioconductor package landing page, e.g. &lt;<a href="https://bioconductor.org/packages/3.13/iSEE/vignettes/basic.html">release</a>&gt;.</p>
+<p>Depending on the version of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> that you are using, this will adaptively lead you to a locally built vignette present on your computer, or the <em>release</em> or the <em>devel</em> version of the Bioconductor package landing page, e.g. &lt;<a href="https://bioconductor.org/packages/3.13/iSEE/vignettes/basic.html">Bioconductor 3.13</a>&gt;.</p>
 </div>
 <div id="app-session-info" class="section level2">
 <h2 class="hasAnchor">
