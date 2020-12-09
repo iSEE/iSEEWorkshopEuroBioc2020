@@ -90,13 +90,15 @@
       
 
       </header><script src="exercises_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="exercises_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="exercises_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+<script src="exercises_files/anchor-sections-1.0/anchor-sections.js"></script><link href="exercises_files/font-awesome-5.1.0/css/all.css" rel="stylesheet">
+<link href="exercises_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Hands-on workshop exercises</h1>
                         <h4 class="author">Kevin Rue-Albrecht, Charlotte Soneson, Federico Marini, and Aaron Lun</h4>
             
-            <h4 class="date">December 08, 2020</h4>
+            <h4 class="date">December 09, 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/iSEE/iSEEWorkshopEuroBioc2020/blob/master/vignettes/exercises.Rmd"><code>vignettes/exercises.Rmd</code></a></small>
       <div class="hidden name"><code>exercises.Rmd</code></div>
@@ -105,26 +107,33 @@
 
     
     
+<div id="introduction" class="section level1">
+<h1 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>Introduction</h1>
+<p>This vignette consists of a series of (independent) hands-on exercises, aimed at exploring the capabilities of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> both interactively and programmatically. Each exercise consists of a short task and a screen shot of the desired appearance of the app instance that should be created. For each exercise, we provide a set of hints, as well as detailed instructions on how to solve the exercise both interactively (by clicking in the app) and programmatically (by directly setting up and launching the desired app instance).</p>
+<p>For a general overview of the default <code>iSEE</code> panels, we refer to the <a href="overview.html">overview vignette</a>. For all the details about the panel classes and the associated slots, we refer to the help pages for the respective panel class (e.g., <code><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">?ReducedDimensionPlot</a></code>).</p>
+</div>
 <div id="prepare-the-session" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#prepare-the-session" class="anchor"></a>Prepare the session</h1>
-<p>Load packages and the demo data set.</p>
+<p>Before starting with the exercises, we need to load the required packages and the demo data set.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/iSEE/iSEE">iSEE</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/iSEE/iSEEu">iSEEu</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://iSEE.github.io/iSEEWorkshopEuroBioc2020">iSEEWorkshopEuroBioc2020</a></span><span class="op">)</span>
 <span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_demo_sce.html">load_demo_sce</a></span><span class="op">(</span><span class="st">"pbmc3k"</span><span class="op">)</span>
-<span class="va">sce</span></code></pre></div>
-<pre><code>## class: SingleCellExperiment 
-## dim: 32738 2643 
-## metadata(0):
-## assays(2): counts logcounts
-## rownames(32738): MIR1302-10 FAM138A ... AC002321.2 AC002321.1
-## rowData names(21): ENSEMBL_ID Symbol_TENx ... FDR_cluster13
-##   FDR_cluster14
-## colnames(2643): Cell1 Cell2 ... Cell2699 Cell2700
-## colData names(23): Sample Barcode ... labels_fine labels_ont
-## reducedDimNames(3): PCA TSNE UMAP
-## altExpNames(0):</code></pre>
+<span class="va">sce</span>
+<span class="co">#&gt; class: SingleCellExperiment </span>
+<span class="co">#&gt; dim: 32738 2643 </span>
+<span class="co">#&gt; metadata(0):</span>
+<span class="co">#&gt; assays(2): counts logcounts</span>
+<span class="co">#&gt; rownames(32738): MIR1302-10 FAM138A ... AC002321.2 AC002321.1</span>
+<span class="co">#&gt; rowData names(21): ENSEMBL_ID Symbol_TENx ... FDR_cluster13</span>
+<span class="co">#&gt;   FDR_cluster14</span>
+<span class="co">#&gt; colnames(2643): Cell1 Cell2 ... Cell2699 Cell2700</span>
+<span class="co">#&gt; colData names(23): Sample Barcode ... labels_fine labels_ont</span>
+<span class="co">#&gt; reducedDimNames(3): PCA TSNE UMAP</span>
+<span class="co">#&gt; altExpNames(0):</span></code></pre></div>
 </div>
 <div id="exercise-1-panel-organisation" class="section level1">
 <h1 class="hasAnchor">
@@ -138,13 +147,13 @@ Panels can be added, removed and resized via the <code>Organization</code> butto
 To pre-specify the panels to be included in the app, use the <code>initial</code> argument to <code><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE()</a></code>.
 </li>
 <li>
-For more information about the different types of panels, see …
+For more information about the different types of panels, see the <a href="overview.html">overview vignette</a> or the help pages for the respective panel classes.
 </li>
 </ul></details><details><summary>Solution (interactively)</summary><ul>
 <li>
 First open an application with the default set of panels.
 </li>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span><span class="op">)</span>
 <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html">runApp</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></code></pre></div>
 <li>
@@ -163,7 +172,7 @@ For each panel, set the correct panel width by modifying the value in the <code>
 Click <code>Apply settings</code>.
 </li>
 </ul></details><details><p><summary>Solution (programmatically)</summary></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">3L</span><span class="op">)</span>,
   <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/RowDataPlot-class.html">RowDataPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">4L</span><span class="op">)</span>,
@@ -180,7 +189,7 @@ Click <code>Apply settings</code>.
 Column (in this case cell) annotations can be visualized using a <code>ColumnDataPlot</code> panel.
 </li>
 <li>
-The cluster labels are available in the <code>Cluster</code> column.
+The cluster labels are available in the <code>Cluster</code> column of <code>colData(sce)</code>.
 </li>
 <li>
 The cell type assignments are available in the <code>labels_fine</code> column of <code>colData(sce)</code> (more coarse-grained assignments are provided in the <code>labels_main</code> column).
@@ -192,7 +201,7 @@ The cell type assignments are available in the <code>labels_fine</code> column o
 <li>
 First open an application with a single <code>ColumnDataPlot</code> panel spanning the full application window)
 </li>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ColumnDataPlot-class.html">ColumnDataPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">12L</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html">runApp</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></code></pre></div>
 <li>
@@ -205,7 +214,7 @@ Under <code>Column of interest (Y-axis)</code>, select the label column (e.g., <
 Under <code>X-axis</code>, select <code>Column data</code>, and under <code>Column of interest (X-axis)</code>, select <code>Cluster</code>.
 </li>
 </ul></details><details><p><summary>Solution (programmatically)</summary></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ColumnDataPlot-class.html">ColumnDataPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">12L</span>, XAxis <span class="op">=</span> <span class="st">"Column data"</span>,
                    YAxis <span class="op">=</span> <span class="st">"labels_fine"</span>, XAxisColumnData <span class="op">=</span> <span class="st">"Cluster"</span><span class="op">)</span>
@@ -227,7 +236,7 @@ The reduced dimension representations in the SingleCellExperiment object can be 
 <li>
 First open an application with two <code>ReducedDimensionPlot</code> panels, each spanning half the application window)
 </li>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span>,
                                 <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html">runApp</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></code></pre></div>
@@ -241,7 +250,7 @@ In the <code>Type</code> selection box, choose <code>TSNE</code>.
 In the second <code>ReducedDimensionPlot</code> panel, repeat the procedure but instead select <code>UMAP</code>.
 </li>
 </ul></details><details><p><summary>Solution (programmatically)</summary></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span>, Type <span class="op">=</span> <span class="st">"TSNE"</span><span class="op">)</span>,
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span>, Type <span class="op">=</span> <span class="st">"UMAP"</span><span class="op">)</span>
@@ -263,7 +272,7 @@ To select a gene, specify the ID provided as row names in the SingleCellExperime
 <li>
 First open an application with a <code>FeatureAssayPlot</code> panel, spanning the full application window)
 </li>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/FeatureAssayPlot-class.html">FeatureAssayPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">12L</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html">runApp</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></code></pre></div>
 <li>
@@ -276,7 +285,7 @@ Under <code>Y-axis feature</code>, type or select <code>CD74</code>.
 Under <code>X-axis</code>, select <code>Column data</code>, and under <code>Column of interest (X-axis)</code>, select <code>Cluster</code>.
 </li>
 </ul></details><details><p><summary>Solution (programmatically)</summary></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/FeatureAssayPlot-class.html">FeatureAssayPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">12L</span>, XAxis <span class="op">=</span> <span class="st">"Column data"</span>,
                      YAxisFeatureName <span class="op">=</span> <span class="st">"CD74"</span>, XAxisColumnData <span class="op">=</span> <span class="st">"Cluster"</span><span class="op">)</span>
@@ -295,7 +304,7 @@ Reduced dimension representations can be displayed using <code>ReducedDimensionP
 The reduced dimension representations in the SingleCellExperiment object can be accessed by name (<code><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDimNames(sce)</a></code> lists the available representations).
 </li>
 <li>
-The cluster labels are available in the <code>Cluster</code> column.
+The cluster labels are available in the <code>Cluster</code> column of <code>colData(sce)</code>.
 </li>
 <li>
 Point attributes can be accessed in the <code>Visual parameters</code> collapsible box. To display or hide the possible options, check the corresponding checkboxes (<code>Color</code>, <code>Shape</code>, <code>Size</code>, <code>Point</code>).
@@ -304,7 +313,7 @@ Point attributes can be accessed in the <code>Visual parameters</code> collapsib
 <li>
 First open an application with two <code>ReducedDimensionPlot</code> panels, each spanning half the application window)
 </li>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span>,
                                 <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html">runApp</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></code></pre></div>
@@ -327,7 +336,7 @@ In the dropdown menu that appears, select <code>Cluster</code>.
 In the second <code>ReducedDimensionPlot</code> panel, repeat the procedure but instead select <code>log10_total</code>.
 </li>
 </ul></details><details><p><summary>Solution (programmatically)</summary></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span>, Type <span class="op">=</span> <span class="st">"TSNE"</span>,
                          ColorBy <span class="op">=</span> <span class="st">"Column data"</span>,
@@ -359,7 +368,7 @@ Point attributes can be accessed in the <code>Visual parameters</code> collapsib
 <li>
 First open an application with two <code>ReducedDimensionPlot</code> panels, each spanning half the application window)
 </li>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span>,
                                 <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html">runApp</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></code></pre></div>
@@ -382,7 +391,7 @@ In the dropdown menu that appears, select or type <code>CD3D</code>.
 In the second <code>ReducedDimensionPlot</code> panel, repeat the procedure but instead select <code>CD79B</code>.
 </li>
 </ul></details><details><p><summary>Solution (programmatically)</summary></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span>, Type <span class="op">=</span> <span class="st">"TSNE"</span>,
                          ColorBy <span class="op">=</span> <span class="st">"Feature name"</span>,
@@ -411,7 +420,7 @@ Point attributes can be accessed in the <code>Visual parameters</code> collapsib
 <li>
 First open an application with two <code>ReducedDimensionPlot</code> panels, each spanning half the application window)
 </li>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span>,
                                 <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html">runApp</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></code></pre></div>
@@ -446,7 +455,7 @@ In the text box underneath, type 3.
 Under <code>Point opacity</code>, drag the slider to 0.2.
 </li>
 </ul></details><details><p><summary>Solution (programmatically)</summary></p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span>, Type <span class="op">=</span> <span class="st">"TSNE"</span>,
                          PointSize <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,
@@ -482,7 +491,7 @@ Points can be selected by clicking and dragging the mouse to draw a rectangle ar
 <li>
 First open an application with one <code>FeatureAssayPlot</code> panel and one <code>ReducedDimensionPlot</code> panel, each spanning half the application window)
 </li>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/FeatureAssayPlot-class.html">FeatureAssayPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span>,
                                 <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html">runApp</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></code></pre></div>
@@ -511,7 +520,7 @@ Under <code>Receive column selection from</code>, select <code>Feature assay plo
 Under <code>Selection effect</code>, make sure that <code>Transparent</code> is chosen.
 </li>
 </ul></details><details><p><summary>Solution (programmatically)</summary></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/FeatureAssayPlot-class.html">FeatureAssayPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span>, 
                      BrushData <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="fl">0</span>, xmax <span class="op">=</span> <span class="fl">15</span>, 
@@ -557,7 +566,7 @@ Points can be selected by clicking and dragging the mouse to draw a rectangle ar
 <li>
 First open an application with one <code>FeatureAssayPlot</code> panel and one <code>ColumnDataPlot</code> panel, each spanning half of the application window)
 </li>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/FeatureAssayPlot-class.html">FeatureAssayPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span>,
                                 <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ColumnDataPlot-class.html">ColumnDataPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html">runApp</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></code></pre></div>
@@ -592,7 +601,7 @@ Under <code>Receive column selection from</code>, select <code>Feature assay plo
 Under <code>Selection effect</code>, make sure that <code>Color</code> is chosen.
 </li>
 </ul></details><details><p><summary>Solution (programmatically)</summary></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE</a></span><span class="op">(</span><span class="va">sce</span>, initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/FeatureAssayPlot-class.html">FeatureAssayPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span>, XAxis <span class="op">=</span> <span class="st">"Feature name"</span>,
                      YAxisFeatureName <span class="op">=</span> <span class="st">"CD79A"</span>, 
@@ -611,68 +620,86 @@ Under <code>Selection effect</code>, make sure that <code>Color</code> is chosen
 <span class="op">)</span><span class="op">)</span></code></pre></div>
 </details><p><img src="screenshots/exercise_09.png" width="992"></p>
 </div>
+<div id="exercise-10-using-modes-from-iseeu" class="section level1">
+<h1 class="hasAnchor">
+<a href="#exercise-10-using-modes-from-iseeu" class="anchor"></a>Exercise 10: Using modes from <code>iSEEu</code>
+</h1>
+<p>Using the <code>pbmc3k</code> data set, load <code>iSEEu</code> and use the <code>modeReducedDim</code> mode to open an app displaying all the reduced dimension representations stored in the SingleCellExperiment object. Color the representations by the cell type assignment.</p>
+<details><summary>Hints</summary><ul>
+<li>
+The cell type assignments are available in the <code>labels_fine</code> column of <code>colData(sce)</code> (more coarse-grained assignments are provided in the <code>labels_main</code> column).
+</li>
+<li>
+The annotation to color by can be specified when calling <code><a href="https://rdrr.io/pkg/iSEEu/man/modeReducedDim.html">iSEEu::modeReducedDim()</a></code>.
+</li>
+</ul></details><details><p><summary>Solution (programmatically)</summary></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEEu/man/modeReducedDim.html">modeReducedDim</a></span><span class="op">(</span><span class="va">sce</span>, colorBy <span class="op">=</span> <span class="st">"labels_main"</span><span class="op">)</span></code></pre></div>
+</details><p><img src="screenshots/exercise_10.png" width="992"></p>
+</div>
 <div id="session-info" class="section level1">
 <h1 class="hasAnchor">
 <a href="#session-info" class="anchor"></a>Session info</h1>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## R Under development (unstable) (2020-11-26 r79513)
-## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 20.04.1 LTS
-## 
-## Matrix products: default
-## BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.8.so
-## 
-## locale:
-##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=C             
-##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
-## 
-## attached base packages:
-## [1] parallel  stats4    stats     graphics  grDevices utils     datasets 
-## [8] methods   base     
-## 
-## other attached packages:
-##  [1] iSEEWorkshopEuroBioc2020_0.0.1 iSEE_2.3.3                    
-##  [3] SingleCellExperiment_1.13.3    SummarizedExperiment_1.21.0   
-##  [5] Biobase_2.51.0                 GenomicRanges_1.43.0          
-##  [7] GenomeInfoDb_1.27.1            IRanges_2.25.4                
-##  [9] S4Vectors_0.29.5               BiocGenerics_0.37.0           
-## [11] MatrixGenerics_1.3.0           matrixStats_0.57.0            
-## 
-## loaded via a namespace (and not attached):
-##  [1] nlme_3.1-150           bitops_1.0-6           fs_1.5.0              
-##  [4] RColorBrewer_1.1-2     rprojroot_2.0.2        tools_4.1.0           
-##  [7] R6_2.5.0               DT_0.16                vipor_0.4.5           
-## [10] mgcv_1.8-33            colorspace_2.0-0       GetoptLong_1.0.4      
-## [13] tidyselect_1.1.0       compiler_4.1.0         textshaping_0.2.1     
-## [16] Cairo_1.5-12.2         shinyjs_2.0.0          desc_1.2.0            
-## [19] DelayedArray_0.17.4    colourpicker_1.1.0     scales_1.1.1          
-## [22] pkgdown_1.6.1          systemfonts_0.3.2      stringr_1.4.0         
-## [25] digest_0.6.27          rmarkdown_2.5          XVector_0.31.0        
-## [28] pkgconfig_2.0.3        htmltools_0.5.0        fastmap_1.0.1         
-## [31] htmlwidgets_1.5.2      rlang_0.4.9            GlobalOptions_0.1.2   
-## [34] shiny_1.5.0            shape_1.4.5            generics_0.1.0        
-## [37] jsonlite_1.7.1         dplyr_1.0.2            RCurl_1.98-1.2        
-## [40] magrittr_2.0.1         GenomeInfoDbData_1.2.4 Matrix_1.2-18         
-## [43] Rcpp_1.0.5             munsell_0.5.0          lifecycle_0.2.0       
-## [46] stringi_1.5.3          yaml_2.2.1             rintrojs_0.2.2        
-## [49] zlibbioc_1.37.0        grid_4.1.0             promises_1.1.1        
-## [52] ggrepel_0.8.2          shinydashboard_0.7.1   crayon_1.3.4          
-## [55] miniUI_0.1.1.1         lattice_0.20-41        splines_4.1.0         
-## [58] circlize_0.4.11        knitr_1.30             ComplexHeatmap_2.7.1  
-## [61] pillar_1.4.7           igraph_1.2.6           rjson_0.2.20          
-## [64] glue_1.4.2             evaluate_0.14          png_0.1-7             
-## [67] vctrs_0.3.5            httpuv_1.5.4           gtable_0.3.0          
-## [70] purrr_0.3.4            clue_0.3-58            assertthat_0.2.1      
-## [73] ggplot2_3.3.2          xfun_0.19              mime_0.9              
-## [76] xtable_1.8-4           later_1.1.0.1          viridisLite_0.3.0     
-## [79] ragg_0.4.0             tibble_3.0.4           memoise_1.1.0         
-## [82] cluster_2.1.0          shinyWidgets_0.5.4     ellipsis_0.3.1        
-## [85] shinyAce_0.4.1</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; R Under development (unstable) (2020-11-26 r79513)</span>
+<span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span>
+<span class="co">#&gt; Running under: Ubuntu 20.04.1 LTS</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Matrix products: default</span>
+<span class="co">#&gt; BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.8.so</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; locale:</span>
+<span class="co">#&gt;  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span>
+<span class="co">#&gt;  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    </span>
+<span class="co">#&gt;  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=C             </span>
+<span class="co">#&gt;  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 </span>
+<span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span>
+<span class="co">#&gt; [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attached base packages:</span>
+<span class="co">#&gt; [1] parallel  stats4    stats     graphics  grDevices utils     datasets </span>
+<span class="co">#&gt; [8] methods   base     </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; other attached packages:</span>
+<span class="co">#&gt;  [1] iSEEWorkshopEuroBioc2020_0.0.1 iSEEu_1.3.0                   </span>
+<span class="co">#&gt;  [3] iSEE_2.3.3                     SingleCellExperiment_1.13.3   </span>
+<span class="co">#&gt;  [5] SummarizedExperiment_1.21.0    Biobase_2.51.0                </span>
+<span class="co">#&gt;  [7] GenomicRanges_1.43.0           GenomeInfoDb_1.27.1           </span>
+<span class="co">#&gt;  [9] IRanges_2.25.4                 S4Vectors_0.29.5              </span>
+<span class="co">#&gt; [11] BiocGenerics_0.37.0            MatrixGenerics_1.3.0          </span>
+<span class="co">#&gt; [13] matrixStats_0.57.0             BiocStyle_2.19.1              </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; loaded via a namespace (and not attached):</span>
+<span class="co">#&gt;  [1] nlme_3.1-150           bitops_1.0-6           fs_1.5.0              </span>
+<span class="co">#&gt;  [4] RColorBrewer_1.1-2     rprojroot_2.0.2        tools_4.1.0           </span>
+<span class="co">#&gt;  [7] R6_2.5.0               DT_0.16                vipor_0.4.5           </span>
+<span class="co">#&gt; [10] mgcv_1.8-33            colorspace_2.0-0       GetoptLong_1.0.4      </span>
+<span class="co">#&gt; [13] tidyselect_1.1.0       compiler_4.1.0         textshaping_0.2.1     </span>
+<span class="co">#&gt; [16] Cairo_1.5-12.2         shinyjs_2.0.0          desc_1.2.0            </span>
+<span class="co">#&gt; [19] DelayedArray_0.17.4    colourpicker_1.1.0     scales_1.1.1          </span>
+<span class="co">#&gt; [22] pkgdown_1.6.1          systemfonts_0.3.2      stringr_1.4.0         </span>
+<span class="co">#&gt; [25] digest_0.6.27          rmarkdown_2.5          XVector_0.31.0        </span>
+<span class="co">#&gt; [28] pkgconfig_2.0.3        htmltools_0.5.0        fastmap_1.0.1         </span>
+<span class="co">#&gt; [31] htmlwidgets_1.5.2      rlang_0.4.9            GlobalOptions_0.1.2   </span>
+<span class="co">#&gt; [34] shiny_1.5.0            shape_1.4.5            generics_0.1.0        </span>
+<span class="co">#&gt; [37] jsonlite_1.7.1         dplyr_1.0.2            RCurl_1.98-1.2        </span>
+<span class="co">#&gt; [40] magrittr_2.0.1         GenomeInfoDbData_1.2.4 Matrix_1.2-18         </span>
+<span class="co">#&gt; [43] Rcpp_1.0.5             munsell_0.5.0          lifecycle_0.2.0       </span>
+<span class="co">#&gt; [46] stringi_1.5.3          yaml_2.2.1             rintrojs_0.2.2        </span>
+<span class="co">#&gt; [49] zlibbioc_1.37.0        grid_4.1.0             promises_1.1.1        </span>
+<span class="co">#&gt; [52] ggrepel_0.8.2          shinydashboard_0.7.1   crayon_1.3.4          </span>
+<span class="co">#&gt; [55] miniUI_0.1.1.1         lattice_0.20-41        splines_4.1.0         </span>
+<span class="co">#&gt; [58] circlize_0.4.11        knitr_1.30             ComplexHeatmap_2.7.1  </span>
+<span class="co">#&gt; [61] pillar_1.4.7           igraph_1.2.6           rjson_0.2.20          </span>
+<span class="co">#&gt; [64] glue_1.4.2             evaluate_0.14          BiocManager_1.30.10   </span>
+<span class="co">#&gt; [67] png_0.1-7              vctrs_0.3.5            httpuv_1.5.4          </span>
+<span class="co">#&gt; [70] gtable_0.3.0           purrr_0.3.4            clue_0.3-58           </span>
+<span class="co">#&gt; [73] assertthat_0.2.1       ggplot2_3.3.2          xfun_0.19             </span>
+<span class="co">#&gt; [76] mime_0.9               xtable_1.8-4           later_1.1.0.1         </span>
+<span class="co">#&gt; [79] viridisLite_0.3.0      ragg_0.4.0             tibble_3.0.4          </span>
+<span class="co">#&gt; [82] memoise_1.1.0          cluster_2.1.0          shinyWidgets_0.5.4    </span>
+<span class="co">#&gt; [85] ellipsis_0.3.1         shinyAce_0.4.1</span></code></pre></div>
 </div>
   </div>
 
