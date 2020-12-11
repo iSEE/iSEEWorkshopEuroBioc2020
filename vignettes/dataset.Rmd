@@ -33,6 +33,11 @@ suppressPackageStartupMessages({
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
 
+<!-- Enable snowflakes in vignettes
+```{r child = "_snow.Rmd"}
+```
+-->
+
 # Preparation of example scRNAseq data {#prepare-scrnaseq-data}
 
 In this workshop, we use example data from the `r Biocpkg("TENxPBMCData")` package.
