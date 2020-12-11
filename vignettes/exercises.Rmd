@@ -37,8 +37,10 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 SCREENSHOT <- function(x, ...) knitr::include_graphics(x)
 ```
 
+<!-- Enable snowflakes in vignettes
 ```{r child = "_snow.Rmd"}
 ```
+-->
 
 # Introduction
 
