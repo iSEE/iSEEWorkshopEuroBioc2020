@@ -38,5 +38,5 @@ navbar:
         href: articles/overview.html
       - text: Preprocessing a data set for iSEE
         href: articles/dataset.html
-      - text: Hands-on workshop exercises
-        href: articles/exercises.html
+      - text: Hands-on workshop recipes
+        href: articles/recipes.html

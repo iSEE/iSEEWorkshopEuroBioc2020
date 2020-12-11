@@ -10,7 +10,12 @@ COPY --chown=rstudio:rstudio . /home/rstudio/iseeworkshopeurobioc2020
 
 ENV R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
 
+RUN apt-get update && \
+      apt-get -y install libgit2-dev
+
 RUN Rscript --vanilla -e "options(repos = c(CRAN = 'https://cran.r-project.org')); BiocManager::install(ask=FALSE)"
+
+RUN Rscript --vanilla -e "options(repos = c(CRAN = 'https://cran.r-project.org')); BiocManager::install('usethis')"
 
 RUN Rscript --vanilla -e "options(repos = c(CRAN = 'https://cran.r-project.org')); devtools::install('.', dependencies=TRUE, build_vignettes=TRUE, repos = BiocManager::repositories())"
 

@@ -1,5 +1,5 @@
 ---
-title: "Hands-on workshop exercises"
+title: "Hands-on workshop recipes"
 author: "Kevin Rue-Albrecht, Charlotte Soneson, Federico Marini, and Aaron Lun"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output:
@@ -12,7 +12,7 @@ output:
     number_sections: true
 bibliography: "`r iSEEWorkshopEuroBioc2020::get_bib_file()`"
 vignette: >
-  %\VignetteIndexEntry{Hands-on workshop exercises}
+  %\VignetteIndexEntry{Hands-on workshop recipes}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -44,16 +44,16 @@ SCREENSHOT <- function(x, ...) knitr::include_graphics(x)
 
 # Introduction
 
-This vignette consists of a series of (independent) hands-on exercises, aimed at exploring the capabilities of `r Biocpkg("iSEE")` both interactively and programmatically.
-Each exercise consists of a short task and a screen shot of the desired appearance of the app instance that should be created. 
-For each exercise, we provide a set of hints, as well as detailed instructions on how to solve the exercise both interactively (by clicking in the app) and programmatically (by directly setting up and launching the desired app instance).
+This vignette consists of a series of (independent) hands-on recipes, aimed at exploring the capabilities of `r Biocpkg("iSEE")` both interactively and programmatically.
+Each recipe consists of a short task and a screen shot of the desired appearance of the app instance that should be created. 
+For each recipe, we provide a set of hints, as well as detailed instructions on how to solve the task both interactively (by clicking in the app) and programmatically (by directly setting up and launching the desired app instance).
 
 For a general overview of the default `iSEE` panels, we refer to the [overview vignette](overview.html). 
 For all the details about the panel classes and the associated slots, we refer to the help pages for the respective panel class (e.g., `?ReducedDimensionPlot`).
 
 # Prepare the session {-}
 
-Before starting with the exercises, we need to load the required packages and the demo data set.
+Before starting with the recipes, we need to load the required packages and the demo data set.
 
 ```{r, message=FALSE}
 library(iSEE)
@@ -63,7 +63,7 @@ sce <- load_demo_sce("pbmc3k")
 sce
 ```
 
-# Exercise 1: Panel organisation
+# Recipe 1: Panel organisation
 
 Using the `pbmc3k` data set, create an app that contains only a reduced dimension plot panel, a row data plot panel and a column data plot panel. The widths of the three panels should be 3, 4 and 5 units, respectively.
 
@@ -104,10 +104,10 @@ app <- iSEE(sce, initial = list(
 </details>
 
 ```{r, echo=FALSE}
-SCREENSHOT("screenshots/exercise_01.png", delay=20)
+SCREENSHOT("screenshots/recipe_01.png", delay=20)
 ```
 
-# Exercise 2: Data parameters configuration - selecting columns to display
+# Recipe 2: Data parameters configuration - selecting columns to display
 
 Using the `pbmc3k` data set, visualize the cell type assignment against the cluster membership, with the aim to identify the predominant cell type in each cluster. In this case, since both cell annotations are categorical, `iSEE` will generate a so called Hinton plot.
 
@@ -146,10 +146,10 @@ app <- iSEE(sce, list(
 </details>
 
 ```{r, echo=FALSE}
-SCREENSHOT("screenshots/exercise_02.png", delay=20)
+SCREENSHOT("screenshots/recipe_02.png", delay=20)
 ```
 
-# Exercise 3: Data parameters configuration - displaying multiple reduced dimension representations
+# Recipe 3: Data parameters configuration - displaying multiple reduced dimension representations
 
 Using the `pbmc3k` data set, display both the tSNE and UMAP representations next to each other.
 
@@ -187,10 +187,10 @@ app <- iSEE(sce, initial = list(
 </details>
 
 ```{r, echo=FALSE}
-SCREENSHOT("screenshots/exercise_03.png", delay=20)
+SCREENSHOT("screenshots/recipe_03.png", delay=20)
 ```
 
-# Exercise 4: Data parameters configuration - displaying the expression of a specific gene across clusters
+# Recipe 4: Data parameters configuration - displaying the expression of a specific gene across clusters
 
 Using the `pbmc3k` data set, plot the distribution of the logcount values for the gene `CD74` in each of the clusters.
 
@@ -227,10 +227,10 @@ app <- iSEE(sce, initial = list(
 </details>
 
 ```{r, echo=FALSE}
-SCREENSHOT("screenshots/exercise_04.png", delay=20)
+SCREENSHOT("screenshots/recipe_04.png", delay=20)
 ```
 
-# Exercise 5: Visual parameters configuration - coloring reduced dimension representations by cell annotation
+# Recipe 5: Visual parameters configuration - coloring reduced dimension representations by cell annotation
 
 Using the `pbmc3k` data set, display two tSNE representations next to each other. In the first one, color the cells by the cluster label. In the second one, color the cells by the log10 of the total UMI count (`log10_total` column of `colData(sce)`). 
 
@@ -277,10 +277,10 @@ app <- iSEE(sce, initial = list(
 </details>
 
 ```{r, echo=FALSE}
-SCREENSHOT("screenshots/exercise_05.png", delay=20)
+SCREENSHOT("screenshots/recipe_05.png", delay=20)
 ```
 
-# Exercise 6: Visual parameters configuration - coloring reduced dimension representations by gene expression
+# Recipe 6: Visual parameters configuration - coloring reduced dimension representations by gene expression
 
 Using the `pbmc3k` data set, display two tSNE representations next to each other. In the first one, color the cells by the logcounts expression level of `CD3D`. In the second one, color the cells by the logcounts expression level of `CD79B`. 
 
@@ -327,10 +327,10 @@ app <- iSEE(sce, initial = list(
 </details>
 
 ```{r, echo=FALSE}
-SCREENSHOT("screenshots/exercise_06.png", delay=20)
+SCREENSHOT("screenshots/recipe_06.png", delay=20)
 ```
 
-# Exercise 7: Visual parameters configuration - changing the size and opacity of points
+# Recipe 7: Visual parameters configuration - changing the size and opacity of points
 
 Using the `pbmc3k` data set, display two tSNE representations next to each other. In the first one, set the point size to 0.5. In the second one, set the point size to 3 and the opacity to 0.2. 
 
@@ -378,10 +378,10 @@ app <- iSEE(sce, initial = list(
 </details>
 
 ```{r, echo=FALSE}
-SCREENSHOT("screenshots/exercise_07.png", delay=20)
+SCREENSHOT("screenshots/recipe_07.png", delay=20)
 ```
 
-# Exercise 8: Selection configuration
+# Recipe 8: Selection configuration
 
 Using the `pbmc3k` data set, display the expression (logcounts) of `CD3D` across the assigned clusters, as well as a tSNE representation colored by the cluster label. Select all cells with a logcount expression value of `CD3D` between (approximately) 0.5 and 4, and highlight these in the tSNE plot by means of transparency.  
 
@@ -440,10 +440,10 @@ app <- iSEE(sce, initial = list(
 </details>
 
 ```{r, echo=FALSE}
-SCREENSHOT("screenshots/exercise_08.png", delay=20)
+SCREENSHOT("screenshots/recipe_08.png", delay=20)
 ```
 
-# Exercise 9: Verifying the cell type identity of clusters
+# Recipe 9: Verifying the cell type identity of clusters
 
 Using the `pbmc3k` data set, create a scatter plots displaying the (logcounts) expression values of `CD79A` vs `CD74`, as well as a Hinton plot of the cluster and cell type assignment annotations. Select the cells co-expressing `CD79A` and `CD74` in the scatter plot. Which cell type/cluster(s) do these correspond to (color these points in the Hinton plot)?
 
@@ -504,10 +504,10 @@ app <- iSEE(sce, initial = list(
 </details>
 
 ```{r, echo=FALSE}
-SCREENSHOT("screenshots/exercise_09.png", delay=20)
+SCREENSHOT("screenshots/recipe_09.png", delay=20)
 ```
 
-# Exercise 10: Using modes from `iSEEu`
+# Recipe 10: Using modes from `iSEEu`
 
 Using the `pbmc3k` data set, load `iSEEu` and use the `modeReducedDim` mode to open an app displaying all the reduced dimension representations stored in the SingleCellExperiment object. Color the representations by the cell type assignment.
 
@@ -527,7 +527,7 @@ app <- modeReducedDim(sce, colorBy = "labels_main")
 </details>
 
 ```{r, echo=FALSE}
-SCREENSHOT("screenshots/exercise_10.png", delay=20)
+SCREENSHOT("screenshots/recipe_10.png", delay=20)
 ```
 
 # Session info
