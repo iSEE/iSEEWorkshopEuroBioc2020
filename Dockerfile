@@ -12,6 +12,8 @@ ENV R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
 
 RUN Rscript --vanilla -e "options(repos = c(CRAN = 'https://cran.r-project.org')); BiocManager::install(ask=FALSE)"
 
+RUN Rscript --vanilla -e "options(repos = c(CRAN = 'https://cran.r-project.org')); BiocManager::install('usethis')"
+
 RUN Rscript --vanilla -e "options(repos = c(CRAN = 'https://cran.r-project.org')); devtools::install('.', dependencies=TRUE, build_vignettes=TRUE, repos = BiocManager::repositories())"
 
 # The vignette needs to be run as the rstudio user, to store the file in his home folder
