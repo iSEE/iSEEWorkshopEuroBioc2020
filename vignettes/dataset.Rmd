@@ -222,7 +222,7 @@ We have now a `SingleCellExperiment` object that contains different types of abu
 
 # Cache data set
 
-We use a function implemented in this workshop package, to cache the precomputed object in an file that we will use as a starting point in the [exercises vignette](exercises.html).
+We use a function implemented in this workshop package, to cache the precomputed object in an file that we will use as a starting point in the [recipes vignette](recipes.html).
 
 ```{r}
 library(iSEEWorkshopEuroBioc2020)

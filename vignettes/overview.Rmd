@@ -50,7 +50,7 @@ To follow along, make sure that you launch the default `r Biocpkg("iSEE")` insta
 
 Note that in the default configuration, the panels do not look exactly like the ones shown in the screenshots that you will see below.
 For example, data points are not immediately colored, and the default annotation variables displayed by each panel may differ.
-The [hands-on exercises](exercises.html) workshop of this workshop will demonstrate how to modify the content of the panels, and how they are displayed. 
+The [hands-on recipes](recipes.html) workshop of this workshop will demonstrate how to modify the content of the panels, and how they are displayed. 
 
 Note that for simplicity, we typically refer to a `SummarizedExperiment` in this workshop; however, `r Biocpkg("iSEE")` works seamlessly for objects of any class extending `SummarizedExperiment` as well (e.g., `SingleCellExperiment`, `DESeqDataSet`).
 That said, some types of panels -- such as the `r .fullName(ReducedDimensionPlot())` -- are only available for objects that contain a `reducedDim` slot (in particular, `SingleCellExperiment` objects); the basic `SummarizedExperiment` class does not contain this slot.
@@ -104,12 +104,12 @@ SCREENSHOT("screenshots/isee-no-se.png", delay=10)
 The `r Biocpkg("iSEE")` user interface (UI) consists of a number of panels, each displaying the data provided in the `SummarizedExperiment` from a specific perspective.
 There are 8 standard panel types; 6 plot panels and 2 table panels, all showcased in the figure shown at the start of the [previous section](#default-app).
 In the default configuration, one panel of each type is included when launching the `r Biocpkg("iSEE")` user interface.
-However, users are free to rearrange, resize, remove or add panels freely, as demonstrated in the separate vignette of [workshop exercises](exercises.html).
+However, users are free to rearrange, resize, remove or add panels freely, as demonstrated in the separate vignette of [workshop recipes](recipes.html).
 We provide a brief overview of each panel type in the following subsections.
 
 In addition to the 8 standard panel types included in `r Biocpkg("iSEE")`, users can create custom panels (both plots and tables).
 Moreover, the `r Biocpkg("iSEEu")` (iSEE universe) package contains additional panel types. 
-The creation and configuration of custom panels is also demonstrated in a series of [workshop advanced exercises](exercises.html).
+The creation and configuration of custom panels is also demonstrated in a series of [workshop advanced recipes](recipes.html).
 
 Specifically, `r Biocpkg("iSEE")` panels are implemented as a hierarchy of S4 classes.
 Only _concrete_ classes (orange) may be instantiated as panels in the user interface; while _virtual_ classes (grey) provide functionality shared by families of panels (e.g., sample-oriented plots, feature-oriented tables).
@@ -292,7 +292,7 @@ SCREENSHOT("screenshots/isee-columndataplot-visualparameters.png", delay=10)
 
 The `Selection parameters` collapsible box provides controls to transfer selections of points (features or samples) between panels.
 
-We demonstrate examples of point transmission in the separate vignette of [workshop exercises](exercises.html)
+We demonstrate examples of point transmission in the separate vignette of [workshop recipes](recipes.html)
 
 ```{r, message=FALSE, echo = FALSE}
 app <- iSEE(sce, initial = list(ReducedDimensionPlot(
