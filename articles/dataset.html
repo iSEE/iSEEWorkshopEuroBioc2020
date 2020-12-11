@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Preprocessing a data set for iSEE</h1>
                         <h4 class="author">Kevin Rue-Albrecht, Charlotte Soneson, Federico Marini, and Aaron Lun</h4>
             
-            <h4 class="date">December 09, 2020</h4>
+            <h4 class="date">December 11, 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/iSEE/iSEEWorkshopEuroBioc2020/blob/master/vignettes/dataset.Rmd"><code>vignettes/dataset.Rmd</code></a></small>
       <div class="hidden name"><code>dataset.Rmd</code></div>
@@ -107,6 +107,42 @@
 
     
     
+<!-- Enable snowflakes in vignettes
+
+
+<div class="snowflakes" aria-hidden="true">
+  <div class="snowflake">
+  ❅
+  </div>
+  <div class="snowflake">
+  ❅
+  </div>
+  <div class="snowflake">
+  ❆
+  </div>
+  <div class="snowflake">
+  ❄
+  </div>
+  <div class="snowflake">
+  ❅
+  </div>
+  <div class="snowflake">
+  ❆
+  </div>
+  <div class="snowflake">
+  ❄
+  </div>
+  <div class="snowflake">
+  ❅
+  </div>
+  <div class="snowflake">
+  ❆
+  </div>
+  <div class="snowflake">
+  ❄
+  </div>
+</div>
+-->
 <div id="prepare-scrnaseq-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#prepare-scrnaseq-data" class="anchor"></a>Preparation of example scRNAseq data</h1>
@@ -210,10 +246,10 @@
 <span class="co">#&gt; DataFrame with 6 rows and 6 columns</span>
 <span class="co">#&gt;              mean     total      tech       bio      p.value          FDR</span>
 <span class="co">#&gt;         &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;    &lt;numeric&gt;    &lt;numeric&gt;</span>
-<span class="co">#&gt; LYZ       1.63950   3.92209  0.884955   3.03713 4.59557e-117 2.54472e-113</span>
-<span class="co">#&gt; S100A9    1.07323   3.36899  0.778205   2.59079 2.72222e-110 9.04431e-107</span>
-<span class="co">#&gt; HLA-DRA   1.56937   3.16577  0.880146   2.28562  5.73028e-68  7.93262e-65</span>
-<span class="co">#&gt; FTL       3.67846   2.88499  0.708226   2.17676  2.46521e-94  5.85029e-91</span>
+<span class="co">#&gt; LYZ       1.63950   3.92209  0.884955   3.03713 4.59558e-117 2.54472e-113</span>
+<span class="co">#&gt; S100A9    1.07323   3.36899  0.778205   2.59079 2.72222e-110 9.04432e-107</span>
+<span class="co">#&gt; HLA-DRA   1.56937   3.16577  0.880146   2.28562  5.73029e-68  7.93263e-65</span>
+<span class="co">#&gt; FTL       3.67846   2.88499  0.708226   2.17676  2.46520e-94  5.85028e-91</span>
 <span class="co">#&gt; CD74      2.23653   2.75839  0.854474   1.90392  1.34728e-50  1.01732e-47</span>
 <span class="co">#&gt; CST3      1.10995   2.59172  0.790231   1.80149  7.24671e-53  6.01912e-50</span></code></pre></div>
 <p>Next, we apply Principal Components Analysis (PCA) and t-distributed Stochastic Neighbor Embedding (t-SNE) to generate low-dimensional representations of the cells in our data set. These low-dimensional representations are added to the <code>reducedDim</code> slot of the <code>SingleCellExperiment</code> object.</p>
