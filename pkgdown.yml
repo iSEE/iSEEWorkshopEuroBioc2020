@@ -3,9 +3,9 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   dataset: dataset.html
-  exercises: exercises.html
   overview: overview.html
-last_built: 2020-12-11T12:02Z
+  recipes: recipes.html
+last_built: 2020-12-11T15:55Z
 urls:
   reference: https://iSEE.github.io/iSEEWorkshopEuroBioc2020/reference
   article: https://iSEE.github.io/iSEEWorkshopEuroBioc2020/articles

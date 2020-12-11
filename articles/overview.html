@@ -68,7 +68,7 @@
       <a href="../articles/dataset.html">Preprocessing a data set for iSEE</a>
     </li>
     <li>
-      <a href="../articles/exercises.html">Hands-on workshop exercises</a>
+      <a href="../articles/recipes.html">Hands-on workshop recipes</a>
     </li>
   </ul>
 </li>
@@ -147,7 +147,7 @@
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>This vignette provides an overview of the graphical interface of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> applications. To follow along, make sure that you launch the default <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> instance as described in the next code block at the start of the <a href="#default-app">following section</a>.</p>
-<p>Note that in the default configuration, the panels do not look exactly like the ones shown in the screenshots that you will see below. For example, data points are not immediately colored, and the default annotation variables displayed by each panel may differ. The <a href="exercises.html">hands-on exercises</a> workshop of this workshop will demonstrate how to modify the content of the panels, and how they are displayed.</p>
+<p>Note that in the default configuration, the panels do not look exactly like the ones shown in the screenshots that you will see below. For example, data points are not immediately colored, and the default annotation variables displayed by each panel may differ. The <a href="recipes.html">hands-on recipes</a> workshop of this workshop will demonstrate how to modify the content of the panels, and how they are displayed.</p>
 <p>Note that for simplicity, we typically refer to a <code>SummarizedExperiment</code> in this workshop; however, <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> works seamlessly for objects of any class extending <code>SummarizedExperiment</code> as well (e.g., <code>SingleCellExperiment</code>, <code>DESeqDataSet</code>). That said, some types of panels – such as the Reduced dimension plot – are only available for objects that contain a <code>reducedDim</code> slot (in particular, <code>SingleCellExperiment</code> objects); the basic <code>SummarizedExperiment</code> class does not contain this slot. In this workshop, we refer to the rows of the <code>SummarizedExperiment</code> object as ‘features’ (these can be genes, transcripts, genomic regions, etc) and to the columns as ‘samples’ (which, in our example data set, are single cells).</p>
 </div>
 <div id="default-app" class="section level1">
@@ -176,8 +176,8 @@
 <div id="the-panel-hierarchy" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-panel-hierarchy" class="anchor"></a>The panel hierarchy</h2>
-<p>The <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> user interface (UI) consists of a number of panels, each displaying the data provided in the <code>SummarizedExperiment</code> from a specific perspective. There are 8 standard panel types; 6 plot panels and 2 table panels, all showcased in the figure shown at the start of the <a href="#default-app">previous section</a>. In the default configuration, one panel of each type is included when launching the <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> user interface. However, users are free to rearrange, resize, remove or add panels freely, as demonstrated in the separate vignette of <a href="exercises.html">workshop exercises</a>. We provide a brief overview of each panel type in the following subsections.</p>
-<p>In addition to the 8 standard panel types included in <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em>, users can create custom panels (both plots and tables). Moreover, the <em><a href="https://bioconductor.org/packages/3.13/iSEEu">iSEEu</a></em> (iSEE universe) package contains additional panel types. The creation and configuration of custom panels is also demonstrated in a series of <a href="exercises.html">workshop advanced exercises</a>.</p>
+<p>The <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> user interface (UI) consists of a number of panels, each displaying the data provided in the <code>SummarizedExperiment</code> from a specific perspective. There are 8 standard panel types; 6 plot panels and 2 table panels, all showcased in the figure shown at the start of the <a href="#default-app">previous section</a>. In the default configuration, one panel of each type is included when launching the <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> user interface. However, users are free to rearrange, resize, remove or add panels freely, as demonstrated in the separate vignette of <a href="recipes.html">workshop recipes</a>. We provide a brief overview of each panel type in the following subsections.</p>
+<p>In addition to the 8 standard panel types included in <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em>, users can create custom panels (both plots and tables). Moreover, the <em><a href="https://bioconductor.org/packages/3.13/iSEEu">iSEEu</a></em> (iSEE universe) package contains additional panel types. The creation and configuration of custom panels is also demonstrated in a series of <a href="recipes.html">workshop advanced recipes</a>.</p>
 <p>Specifically, <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> panels are implemented as a hierarchy of S4 classes. Only <em>concrete</em> classes (orange) may be instantiated as panels in the user interface; while <em>virtual</em> classes (grey) provide functionality shared by families of panels (e.g., sample-oriented plots, feature-oriented tables).</p>
 <p><img src="schematics/panel-classes.png" width="100%"></p>
 <!--
@@ -256,7 +256,7 @@ I added a few sentences to the introduction of this section to try to address th
 <h2 class="hasAnchor">
 <a href="#selection-parameter-box" class="anchor"></a>Selection parameters</h2>
 <p>The <code>Selection parameters</code> collapsible box provides controls to transfer selections of points (features or samples) between panels.</p>
-<p>We demonstrate examples of point transmission in the separate vignette of <a href="exercises.html">workshop exercises</a></p>
+<p>We demonstrate examples of point transmission in the separate vignette of <a href="recipes.html">workshop recipes</a></p>
 <p><img src="screenshots/isee-reduceddimensionplot-selectionparameters.png" width="100%"></p>
 </div>
 </div>

@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hands-on workshop exercises • iSEEWorkshopEuroBioc2020</title>
+<title>Hands-on workshop recipes • iSEEWorkshopEuroBioc2020</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Hands-on workshop exercises">
+<meta property="og:title" content="Hands-on workshop recipes">
 <meta property="og:description" content="iSEEWorkshopEuroBioc2020">
 <meta property="og:image" content="https://iSEE.github.io/iSEEWorkshopEuroBioc2020/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -68,7 +68,7 @@
       <a href="../articles/dataset.html">Preprocessing a data set for iSEE</a>
     </li>
     <li>
-      <a href="../articles/exercises.html">Hands-on workshop exercises</a>
+      <a href="../articles/recipes.html">Hands-on workshop recipes</a>
     </li>
   </ul>
 </li>
@@ -89,19 +89,19 @@
 
       
 
-      </header><script src="exercises_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="exercises_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="exercises_files/anchor-sections-1.0/anchor-sections.js"></script><link href="exercises_files/font-awesome-5.1.0/css/all.css" rel="stylesheet">
-<link href="exercises_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
+      </header><script src="recipes_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="recipes_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="recipes_files/anchor-sections-1.0/anchor-sections.js"></script><link href="recipes_files/font-awesome-5.1.0/css/all.css" rel="stylesheet">
+<link href="recipes_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Hands-on workshop exercises</h1>
+      <h1 data-toc-skip>Hands-on workshop recipes</h1>
                         <h4 class="author">Kevin Rue-Albrecht, Charlotte Soneson, Federico Marini, and Aaron Lun</h4>
             
             <h4 class="date">December 11, 2020</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/iSEE/iSEEWorkshopEuroBioc2020/blob/master/vignettes/exercises.Rmd"><code>vignettes/exercises.Rmd</code></a></small>
-      <div class="hidden name"><code>exercises.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/iSEE/iSEEWorkshopEuroBioc2020/blob/master/vignettes/recipes.Rmd"><code>vignettes/recipes.Rmd</code></a></small>
+      <div class="hidden name"><code>recipes.Rmd</code></div>
 
     </div>
 
@@ -146,13 +146,13 @@
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>This vignette consists of a series of (independent) hands-on exercises, aimed at exploring the capabilities of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> both interactively and programmatically. Each exercise consists of a short task and a screen shot of the desired appearance of the app instance that should be created. For each exercise, we provide a set of hints, as well as detailed instructions on how to solve the exercise both interactively (by clicking in the app) and programmatically (by directly setting up and launching the desired app instance).</p>
+<p>This vignette consists of a series of (independent) hands-on recipes, aimed at exploring the capabilities of <em><a href="https://bioconductor.org/packages/3.13/iSEE">iSEE</a></em> both interactively and programmatically. Each recipe consists of a short task and a screen shot of the desired appearance of the app instance that should be created. For each recipe, we provide a set of hints, as well as detailed instructions on how to solve the task both interactively (by clicking in the app) and programmatically (by directly setting up and launching the desired app instance).</p>
 <p>For a general overview of the default <code>iSEE</code> panels, we refer to the <a href="overview.html">overview vignette</a>. For all the details about the panel classes and the associated slots, we refer to the help pages for the respective panel class (e.g., <code><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">?ReducedDimensionPlot</a></code>).</p>
 </div>
 <div id="prepare-the-session" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#prepare-the-session" class="anchor"></a>Prepare the session</h1>
-<p>Before starting with the exercises, we need to load the required packages and the demo data set.</p>
+<p>Before starting with the recipes, we need to load the required packages and the demo data set.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/iSEE/iSEE">iSEE</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/iSEE/iSEEu">iSEEu</a></span><span class="op">)</span>
@@ -171,9 +171,9 @@
 <span class="co">#&gt; reducedDimNames(3): PCA TSNE UMAP</span>
 <span class="co">#&gt; altExpNames(0):</span></code></pre></div>
 </div>
-<div id="exercise-1-panel-organisation" class="section level1">
+<div id="recipe-1-panel-organisation" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise-1-panel-organisation" class="anchor"></a>Exercise 1: Panel organisation</h1>
+<a href="#recipe-1-panel-organisation" class="anchor"></a>Recipe 1: Panel organisation</h1>
 <p>Using the <code>pbmc3k</code> data set, create an app that contains only a reduced dimension plot panel, a row data plot panel and a column data plot panel. The widths of the three panels should be 3, 4 and 5 units, respectively.</p>
 <details><summary>Hints</summary><ul>
 <li>
@@ -214,11 +214,11 @@ Click <code>Apply settings</code>.
   <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/RowDataPlot-class.html">RowDataPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">4L</span><span class="op">)</span>,
   <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ColumnDataPlot-class.html">ColumnDataPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-</details><p><img src="screenshots/exercise_01.png" width="992"></p>
+</details><p><img src="screenshots/recipe_01.png" width="992"></p>
 </div>
-<div id="exercise-2-data-parameters-configuration---selecting-columns-to-display" class="section level1">
+<div id="recipe-2-data-parameters-configuration---selecting-columns-to-display" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise-2-data-parameters-configuration---selecting-columns-to-display" class="anchor"></a>Exercise 2: Data parameters configuration - selecting columns to display</h1>
+<a href="#recipe-2-data-parameters-configuration---selecting-columns-to-display" class="anchor"></a>Recipe 2: Data parameters configuration - selecting columns to display</h1>
 <p>Using the <code>pbmc3k</code> data set, visualize the cell type assignment against the cluster membership, with the aim to identify the predominant cell type in each cluster. In this case, since both cell annotations are categorical, <code>iSEE</code> will generate a so called Hinton plot.</p>
 <details><summary>Hints</summary><ul>
 <li>
@@ -255,11 +255,11 @@ Under <code>X-axis</code>, select <code>Column data</code>, and under <code>Colu
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ColumnDataPlot-class.html">ColumnDataPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">12L</span>, XAxis <span class="op">=</span> <span class="st">"Column data"</span>,
                    YAxis <span class="op">=</span> <span class="st">"labels_fine"</span>, XAxisColumnData <span class="op">=</span> <span class="st">"Cluster"</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-</details><p><img src="screenshots/exercise_02.png" width="992"></p>
+</details><p><img src="screenshots/recipe_02.png" width="992"></p>
 </div>
-<div id="exercise-3-data-parameters-configuration---displaying-multiple-reduced-dimension-representations" class="section level1">
+<div id="recipe-3-data-parameters-configuration---displaying-multiple-reduced-dimension-representations" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise-3-data-parameters-configuration---displaying-multiple-reduced-dimension-representations" class="anchor"></a>Exercise 3: Data parameters configuration - displaying multiple reduced dimension representations</h1>
+<a href="#recipe-3-data-parameters-configuration---displaying-multiple-reduced-dimension-representations" class="anchor"></a>Recipe 3: Data parameters configuration - displaying multiple reduced dimension representations</h1>
 <p>Using the <code>pbmc3k</code> data set, display both the tSNE and UMAP representations next to each other.</p>
 <details><summary>Hints</summary><ul>
 <li>
@@ -291,11 +291,11 @@ In the second <code>ReducedDimensionPlot</code> panel, repeat the procedure but 
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span>, Type <span class="op">=</span> <span class="st">"TSNE"</span><span class="op">)</span>,
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span>, Type <span class="op">=</span> <span class="st">"UMAP"</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-</details><p><img src="screenshots/exercise_03.png" width="992"></p>
+</details><p><img src="screenshots/recipe_03.png" width="992"></p>
 </div>
-<div id="exercise-4-data-parameters-configuration---displaying-the-expression-of-a-specific-gene-across-clusters" class="section level1">
+<div id="recipe-4-data-parameters-configuration---displaying-the-expression-of-a-specific-gene-across-clusters" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise-4-data-parameters-configuration---displaying-the-expression-of-a-specific-gene-across-clusters" class="anchor"></a>Exercise 4: Data parameters configuration - displaying the expression of a specific gene across clusters</h1>
+<a href="#recipe-4-data-parameters-configuration---displaying-the-expression-of-a-specific-gene-across-clusters" class="anchor"></a>Recipe 4: Data parameters configuration - displaying the expression of a specific gene across clusters</h1>
 <p>Using the <code>pbmc3k</code> data set, plot the distribution of the logcount values for the gene <code>CD74</code> in each of the clusters.</p>
 <details><summary>Hints</summary><ul>
 <li>
@@ -326,11 +326,11 @@ Under <code>X-axis</code>, select <code>Column data</code>, and under <code>Colu
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/FeatureAssayPlot-class.html">FeatureAssayPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">12L</span>, XAxis <span class="op">=</span> <span class="st">"Column data"</span>,
                      YAxisFeatureName <span class="op">=</span> <span class="st">"CD74"</span>, XAxisColumnData <span class="op">=</span> <span class="st">"Cluster"</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-</details><p><img src="screenshots/exercise_04.png" width="992"></p>
+</details><p><img src="screenshots/recipe_04.png" width="992"></p>
 </div>
-<div id="exercise-5-visual-parameters-configuration---coloring-reduced-dimension-representations-by-cell-annotation" class="section level1">
+<div id="recipe-5-visual-parameters-configuration---coloring-reduced-dimension-representations-by-cell-annotation" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise-5-visual-parameters-configuration---coloring-reduced-dimension-representations-by-cell-annotation" class="anchor"></a>Exercise 5: Visual parameters configuration - coloring reduced dimension representations by cell annotation</h1>
+<a href="#recipe-5-visual-parameters-configuration---coloring-reduced-dimension-representations-by-cell-annotation" class="anchor"></a>Recipe 5: Visual parameters configuration - coloring reduced dimension representations by cell annotation</h1>
 <p>Using the <code>pbmc3k</code> data set, display two tSNE representations next to each other. In the first one, color the cells by the cluster label. In the second one, color the cells by the log10 of the total UMI count (<code>log10_total</code> column of <code>colData(sce)</code>).</p>
 <details><summary>Hints</summary><ul>
 <li>
@@ -381,11 +381,11 @@ In the second <code>ReducedDimensionPlot</code> panel, repeat the procedure but 
                          ColorBy <span class="op">=</span> <span class="st">"Column data"</span>,
                          ColorByColumnData <span class="op">=</span> <span class="st">"log10_total"</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-</details><p><img src="screenshots/exercise_05.png" width="992"></p>
+</details><p><img src="screenshots/recipe_05.png" width="992"></p>
 </div>
-<div id="exercise-6-visual-parameters-configuration---coloring-reduced-dimension-representations-by-gene-expression" class="section level1">
+<div id="recipe-6-visual-parameters-configuration---coloring-reduced-dimension-representations-by-gene-expression" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise-6-visual-parameters-configuration---coloring-reduced-dimension-representations-by-gene-expression" class="anchor"></a>Exercise 6: Visual parameters configuration - coloring reduced dimension representations by gene expression</h1>
+<a href="#recipe-6-visual-parameters-configuration---coloring-reduced-dimension-representations-by-gene-expression" class="anchor"></a>Recipe 6: Visual parameters configuration - coloring reduced dimension representations by gene expression</h1>
 <p>Using the <code>pbmc3k</code> data set, display two tSNE representations next to each other. In the first one, color the cells by the logcounts expression level of <code>CD3D</code>. In the second one, color the cells by the logcounts expression level of <code>CD79B</code>.</p>
 <details><summary>Hints</summary><ul>
 <li>
@@ -436,11 +436,11 @@ In the second <code>ReducedDimensionPlot</code> panel, repeat the procedure but 
                          ColorBy <span class="op">=</span> <span class="st">"Feature name"</span>,
                          ColorByFeatureName <span class="op">=</span> <span class="st">"CD79B"</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-</details><p><img src="screenshots/exercise_06.png" width="992"></p>
+</details><p><img src="screenshots/recipe_06.png" width="992"></p>
 </div>
-<div id="exercise-7-visual-parameters-configuration---changing-the-size-and-opacity-of-points" class="section level1">
+<div id="recipe-7-visual-parameters-configuration---changing-the-size-and-opacity-of-points" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise-7-visual-parameters-configuration---changing-the-size-and-opacity-of-points" class="anchor"></a>Exercise 7: Visual parameters configuration - changing the size and opacity of points</h1>
+<a href="#recipe-7-visual-parameters-configuration---changing-the-size-and-opacity-of-points" class="anchor"></a>Recipe 7: Visual parameters configuration - changing the size and opacity of points</h1>
 <p>Using the <code>pbmc3k</code> data set, display two tSNE representations next to each other. In the first one, set the point size to 0.5. In the second one, set the point size to 3 and the opacity to 0.2.</p>
 <details><summary>Hints</summary><ul>
 <li>
@@ -498,11 +498,11 @@ Under <code>Point opacity</code>, drag the slider to 0.2.
     <span class="fu"><a href="https://rdrr.io/pkg/iSEE/man/ReducedDimensionPlot-class.html">ReducedDimensionPlot</a></span><span class="op">(</span>PanelWidth <span class="op">=</span> <span class="fl">6L</span>, Type <span class="op">=</span> <span class="st">"TSNE"</span>,
                          PointSize <span class="op">=</span> <span class="fl">3</span>, PointAlpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-</details><p><img src="screenshots/exercise_07.png" width="992"></p>
+</details><p><img src="screenshots/recipe_07.png" width="992"></p>
 </div>
-<div id="exercise-8-selection-configuration" class="section level1">
+<div id="recipe-8-selection-configuration" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise-8-selection-configuration" class="anchor"></a>Exercise 8: Selection configuration</h1>
+<a href="#recipe-8-selection-configuration" class="anchor"></a>Recipe 8: Selection configuration</h1>
 <p>Using the <code>pbmc3k</code> data set, display the expression (logcounts) of <code>CD3D</code> across the assigned clusters, as well as a tSNE representation colored by the cluster label. Select all cells with a logcount expression value of <code>CD3D</code> between (approximately) 0.5 and 4, and highlight these in the tSNE plot by means of transparency.</p>
 <details><summary>Hints</summary><ul>
 <li>
@@ -573,11 +573,11 @@ Under <code>Selection effect</code>, make sure that <code>Transparent</code> is 
                          SelectionEffect <span class="op">=</span> <span class="st">"Transparent"</span>, 
                          ColumnSelectionSource <span class="op">=</span> <span class="st">"FeatureAssayPlot1"</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-</details><p><img src="screenshots/exercise_08.png" width="992"></p>
+</details><p><img src="screenshots/recipe_08.png" width="992"></p>
 </div>
-<div id="exercise-9-verifying-the-cell-type-identity-of-clusters" class="section level1">
+<div id="recipe-9-verifying-the-cell-type-identity-of-clusters" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise-9-verifying-the-cell-type-identity-of-clusters" class="anchor"></a>Exercise 9: Verifying the cell type identity of clusters</h1>
+<a href="#recipe-9-verifying-the-cell-type-identity-of-clusters" class="anchor"></a>Recipe 9: Verifying the cell type identity of clusters</h1>
 <p>Using the <code>pbmc3k</code> data set, create a scatter plots displaying the (logcounts) expression values of <code>CD79A</code> vs <code>CD74</code>, as well as a Hinton plot of the cluster and cell type assignment annotations. Select the cells co-expressing <code>CD79A</code> and <code>CD74</code> in the scatter plot. Which cell type/cluster(s) do these correspond to (color these points in the Hinton plot)?</p>
 <details><summary>Hints</summary><ul>
 <li>
@@ -654,11 +654,11 @@ Under <code>Selection effect</code>, make sure that <code>Color</code> is chosen
                    ColumnSelectionSource <span class="op">=</span> <span class="st">"FeatureAssayPlot1"</span>,
                    SelectionEffect <span class="op">=</span> <span class="st">"Color"</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-</details><p><img src="screenshots/exercise_09.png" width="992"></p>
+</details><p><img src="screenshots/recipe_09.png" width="992"></p>
 </div>
-<div id="exercise-10-using-modes-from-iseeu" class="section level1">
+<div id="recipe-10-using-modes-from-iseeu" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise-10-using-modes-from-iseeu" class="anchor"></a>Exercise 10: Using modes from <code>iSEEu</code>
+<a href="#recipe-10-using-modes-from-iseeu" class="anchor"></a>Recipe 10: Using modes from <code>iSEEu</code>
 </h1>
 <p>Using the <code>pbmc3k</code> data set, load <code>iSEEu</code> and use the <code>modeReducedDim</code> mode to open an app displaying all the reduced dimension representations stored in the SingleCellExperiment object. Color the representations by the cell type assignment.</p>
 <details><summary>Hints</summary><ul>
@@ -671,7 +671,7 @@ The annotation to color by can be specified when calling <code><a href="https://
 </ul></details><details><p><summary>Solution (programmatically)</summary></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iSEEu/man/modeReducedDim.html">modeReducedDim</a></span><span class="op">(</span><span class="va">sce</span>, colorBy <span class="op">=</span> <span class="st">"labels_main"</span><span class="op">)</span></code></pre></div>
-</details><p><img src="screenshots/exercise_10.png" width="992"></p>
+</details><p><img src="screenshots/recipe_10.png" width="992"></p>
 </div>
 <div id="session-info" class="section level1">
 <h1 class="hasAnchor">
