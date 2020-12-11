@@ -37,6 +37,9 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 SCREENSHOT <- function(x, ...) knitr::include_graphics(x)
 ```
 
+```{r child = "_snow.Rmd"}
+```
+
 # Introduction
 
 This vignette consists of a series of (independent) hands-on exercises, aimed at exploring the capabilities of `r Biocpkg("iSEE")` both interactively and programmatically.

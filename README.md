@@ -1,5 +1,38 @@
 <img src="man/figures/Banner-Xmas-2.png" align="center" width="100%">
 
+<div class="snowflakes" aria-hidden="true">
+  <div class="snowflake">
+  ❅
+  </div>
+  <div class="snowflake">
+  ❅
+  </div>
+  <div class="snowflake">
+  ❆
+  </div>
+  <div class="snowflake">
+  ❄
+  </div>
+  <div class="snowflake">
+  ❅
+  </div>
+  <div class="snowflake">
+  ❆
+  </div>
+  <div class="snowflake">
+  ❄
+  </div>
+  <div class="snowflake">
+  ❅
+  </div>
+  <div class="snowflake">
+  ❆
+  </div>
+  <div class="snowflake">
+  ❄
+  </div>
+</div>
+
 <!-- badges: start -->
 [![R build status](https://github.com/iSEE/iSEEWorkshopEuroBioc2020/workflows/build_check_deploy/badge.svg)](https://github.com/iSEE/iSEEWorkshopEuroBioc2020/actions)
 [![Codecov.io coverage status](https://codecov.io/github/iSEE/iSEEWorkshopEuroBioc2020/coverage.svg?branch=main)](https://codecov.io/github/iSEE/iSEEWorkshopEuroBioc2020)
