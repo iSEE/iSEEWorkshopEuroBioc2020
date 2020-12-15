@@ -530,6 +530,53 @@ app <- modeReducedDim(sce, colorBy = "labels_main")
 SCREENSHOT("screenshots/recipe_10.png", delay=20)
 ```
 
+# Recipe 11 - Including a tour
+
+Using the `pbmc3k` data set, display two tSNE representations next to each other. In the first one, color the cells by the logcounts expression level of `CD3D`. In the second one, color the cells by the logcounts expression level of `CD79B`. Also include a small tour that starts with a welcome message, next walks through the two panels, giving an informative message for each, and finally ends with a concluding message to the user. 
+
+<details>
+<summary>Hints</summary>
+<ul>
+<li>Reduced dimension representations can be displayed using `ReducedDimensionPlot` panels.</li>
+<li>The reduced dimension representations in the SingleCellExperiment object can be accessed by name (`reducedDimNames(sce)` lists the available representations).</li>
+<li>To select a gene, specify the ID provided as row names in the SingleCellExperiment.</li>
+<li>Point attributes can be accessed in the `Visual parameters` collapsible box. To display or hide the possible options, check the corresponding checkboxes (`Color`, `Shape`, `Size`, `Point`).</li>
+<li>Tours are provided via the `tour` argument to `iSEE()`.</li>
+<li>A tour is defined by a two-column data frame, with columns named `element` and `intro`. The `element` column contains the names of UI elements, prefixed by a hash sign. More details, including how to find the name of a particular UI elements, can be found in the `Configuring iSEE apps` vignette of `iSEE`.</li>
+</ul>
+</details>
+
+<details>
+<summary>Solution (programmatically)</summary>
+```{r}
+tour <- data.frame(
+    element = c(
+        "#Welcome",
+        "#ReducedDimensionPlot1",
+        "#ReducedDimensionPlot2",
+        "#Conclusion"),
+    intro = c(
+        "Welcome to this tour!",
+        "This is the first reduced dimension plot",
+        "And here is the second one",
+        "Thank you for taking this tour!"),
+    stringsAsFactors = FALSE)
+
+app <- iSEE(sce, initial = list(
+    ReducedDimensionPlot(PanelWidth = 6L, Type = "TSNE",
+                         ColorBy = "Feature name",
+                         ColorByFeatureName = "CD3D"),
+    ReducedDimensionPlot(PanelWidth = 6L, Type = "TSNE",
+                         ColorBy = "Feature name",
+                         ColorByFeatureName = "CD79B")), 
+    tour = tour)
+```
+</details>
+
+```{r, echo=FALSE}
+SCREENSHOT("screenshots/recipe_11.png", delay=20)
+```
+
 # Session info
 
 ```{r}
