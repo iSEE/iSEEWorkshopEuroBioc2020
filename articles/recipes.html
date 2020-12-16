@@ -97,7 +97,7 @@
       <h1 data-toc-skip>Hands-on workshop recipes</h1>
                         <h4 class="author">Kevin Rue-Albrecht, Charlotte Soneson, Federico Marini, and Aaron Lun</h4>
             
-            <h4 class="date">December 15, 2020</h4>
+            <h4 class="date">December 16, 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/iSEE/iSEEWorkshopEuroBioc2020/blob/master/vignettes/recipes.Rmd"><code>vignettes/recipes.Rmd</code></a></small>
       <div class="hidden name"><code>recipes.Rmd</code></div>
@@ -180,6 +180,9 @@ Panels can be added, removed and resized via the <code>Organization</code> butto
 </li>
 <li>
 To pre-specify the panels to be included in the app, use the <code>initial</code> argument to <code><a href="https://rdrr.io/pkg/iSEE/man/iSEE.html">iSEE()</a></code>.
+</li>
+<li>
+You can remind yourself of the list of slot names available for each panel class and their respective value using the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function on any instance of a panel object, e.g. <code><a href="https://rdrr.io/r/utils/str.html">str(ReducedDimensionPlot())</a></code>.
 </li>
 <li>
 For more information about the different types of panels, see the <a href="overview.html">overview vignette</a> or the help pages for the respective panel classes.
