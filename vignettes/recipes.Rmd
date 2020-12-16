@@ -72,6 +72,7 @@ Using the `pbmc3k` data set, create an app that contains only a reduced dimensio
 <ul>
 <li>Panels can be added, removed and resized via the `Organization` button in the top right corner of the app.</li>
 <li>To pre-specify the panels to be included in the app, use the `initial` argument to `iSEE()`.</li>
+<li>You can remind yourself of the list of slot names available for each panel class and their respective value using the `str()` function on any instance of a panel object, e.g. `str(ReducedDimensionPlot())`.</li>
 <li>For more information about the different types of panels, see the [overview vignette](overview.html) or the help pages for the respective panel classes.</li>
 </ul>
 </details>
